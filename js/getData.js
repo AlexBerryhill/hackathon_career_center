@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import fetch from 'electron-fetch'
 // or
 const fetch = require('electron-fetch').default
@@ -15,3 +16,12 @@ for(var i = 0; i < appointments.length; i++){
 	appointment_div += "<div class='appointment'>"+appointments[i].name+
 }
 document.getElementById('name_container').innerHTML=appointment_div;
+=======
+fetch("https://momsstore.herokuapp.com/customer")
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+  });
+>>>>>>> main
