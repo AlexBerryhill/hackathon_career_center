@@ -3,12 +3,19 @@
     <head>
       <meta charset="UTF-8">
       <title>Hello World!</title>
-      <link rel="stylesheet" href="index.css">
+      <link rel="stylesheet" href="./index.css">
     </head>
     <body>
-      <h1>Hello World!</h1>
-      We are using node<script>document.write(process.versions.node)</script>,
-      Chrome <script>document.write(process.versions.chrome)</script>,
-      and Electron <script>document.write(process.versions.electron)</script>.
+      <div class="sidebar">
+        <form id="url_container" action="./js/getData.js">
+            <input type="text" name="url" id="url" placeholder="url">
+            <button type="submit">Submit</button>
+        </form>
+        <div>
+
+        </div>
+      </div>
+      <script src="./js/getData.js"></script>
+      <a href="./html/home.html">Start</a>    
     </body>
   </html>

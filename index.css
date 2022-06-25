@@ -1,3 +1,11 @@
-script{
-    display: block;
+.sidebar{
+    float: left;
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+#url_container{
+    width: 150px;
+    top: 0px;
 }
