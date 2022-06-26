@@ -27,3 +27,8 @@ function populateNames(){
 	document.getElementById('name_container').innerHTML=appointment_div;
 }
 
+function init(){
+	document.getElementById("submit").addEventListener('click', function() {
+    	populateNames();
+	});
+}
