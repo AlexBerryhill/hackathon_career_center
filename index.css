@@ -1,11 +1,30 @@
 .sidebar{
     float: left;
-    display: flex;
-    flex-direction: column;
-    width: 150px;
-}
+
+    /* display: flex;
+    flex-direction: column; */
+    height: 100vh;
+    width: 160px;
+    border: groove;
+} 
 
 #url_container{
     width: 150px;
     top: 0px;
+    background-color: lightgray;
+    padding: 5px;
+}
+
+#url_container input[type='text']{
+    width: 100px;
+}
+
+#url_container button{
+    width: 35px;
+}
+
+.name_container{
+    width: 150px;
+    background-color: lightgray;
+    padding: 5px;
 }

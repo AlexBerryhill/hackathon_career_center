@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hello World!</title>
-    <link rel="stylesheet" href="./index.css" />
-  </head>
-  <body>
-    <div class="sidebar">
-      <form id="url_container" action="./js/getData.js">
-        <input type="text" name="url" id="url" placeholder="url" />
-        <button type="submit">Submit</button>
-      </form>
-      <div id="name_container"></div>
-    </div>
-    <!-- <a href="./html/home.html">Start</a> -->
-    <script type="module" src="./js/getData.js"></script>
-  </body>
-</html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Hello World!</title>
+      <link rel="stylesheet" href="./index.css">
+      <script src="./js/getData.js"></script>
+    </head>
+    <body>
+      <div class="sidebar">
+        <form id="url_container" >
+            <input type="text" name="url" id="url" placeholder="url">
+            <button type="submit" id="submit" onclick="populateNames()">Sub</button>
+        </form>
+        <div id="name_container">
+
+        </div>
+      </div>
+      <script>init()</script>
+    </body>
+  </html>
