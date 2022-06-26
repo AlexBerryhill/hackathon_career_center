@@ -16,15 +16,24 @@ async function getNames(url){
 }
 
 async function populateNames(){
-	console.log("'"+String(document.getElementById('url').value)+"'")
 	var appointments = await getNames(document.getElementById('url').value)
 	console.log(appointments)
 	var appointment_div = []
 	//For every appointment put the student into the sidebar
 	for(var i = 0; i < appointments.length; i++){
-		appointment_div += "<div class='appointment'>"+appointments[i].FirstName+"</div>"
+		appointment_div += "<div class='appointment' onclick='openData("+i+")'><p>"+appointments[i].FirstName+"</p></div>"
 	}
 	console.log(appointment_div)
 	document.getElementById('name_container').innerHTML=appointment_div;
+}
+
+async function openData(index){
+	var appointments = await getNames(document.getElementById('url').value)
+	const person = appointments[index]
+	document.getElementById('name').innerHTML='Name: '+person.FirstName;
+	document.getElementById('email').innerHTML='Email: '+person.email;
+	document.getElementById('time').innerHTML='Time: '+person.time;
+
+	html = ""
 }
 
