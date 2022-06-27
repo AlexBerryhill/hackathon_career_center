@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "electron-fetch": "^1.7.4",
-    "nodemailer": "^6.7.5"
+    "nodemailer": "^6.7.5",
+    "sendmail": "^1.6.1"
   }
 }
