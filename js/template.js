@@ -23,3 +23,4 @@ function fillTemplate(template){
     const directoryPath = path.join(__dirname, 'templates');
 
 }
+class 
