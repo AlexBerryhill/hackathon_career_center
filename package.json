@@ -21,8 +21,9 @@
     "electron": "^19.0.6"
   },
   "dependencies": {
+    "dotenv": "^16.0.1",
     "electron-fetch": "^1.7.4",
     "nodemailer": "^6.7.5",
-    "sendmail": "^1.6.1"
+    "nodemailer-smtp-transport": "^2.7.4"
   }
 }
