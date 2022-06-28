@@ -2,7 +2,7 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const url = require("url");
 const nodemailer = require("nodemailer");
-const { sendIt } = require("./js/sendIt");
+const { sendIt } = require("./js/outlookSendIt");
 
 sendIt();
 
