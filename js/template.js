@@ -37,10 +37,18 @@ function fillTemplate(template_name, name, time, your_name, date, location){
 }
 
 function openTemplateCreater(){
-    html =  "<div>"+
+    html =  "<div class = 'full_grid'>"+
             "    <input type = 'text' name = 'template_title' id = 'template_title' placeholder='Title'></input>"+
             "    <textarea name='template_text' id='template_text' cols='60' rows='20' placeholder='content'></textarea>"+
             "    <button onclick='createTemplate()'>Create</button>"+
+            "</div>"+
+            "<div class='full_grid'>"+
+            "    Key:<br>"+
+            "    <nbsp>{name} = Recipient Name<br>"+
+            "    <nbsp>{time} = Time(hour/minute)<br>"+
+            "    <nbsp>{location} = Zoom/In Person<br>"+
+            "    <nbsp>{your_name} = Your (Mentor) Name<br>"+
+            "    The complimentary close is already included"
             "</div>"
     document.getElementById('template_cards_container').innerHTML=html
 }
@@ -49,21 +57,21 @@ function createTemplate(){
     title = document.getElementById('template_title').value;
     text = document.getElementById('template_text').value;
     html =  '<!DOCTYPE html>'+
-            '\n    <html>'+
-            '\n    <head>'+
-            '\n        <base target="_top">'+
-            '\n    </head>'+
-            '\n    <body>'+
-            '\n        <p>'+
+            '<html>'+
+            '    <head>'+
+            '        <base target="_top">'+
+            '    </head>'+
+            '    <body>'+
+            '        <p>'+
                         text+
-            '\n           <br>{your_name}<br>'+
-            '\n           Career Success Mentor<br>'+
-            '\n           BYU-I Career Center | MC 200 <br>'+ 
-            '\n           208.496.9825  <br>'+
-            '\n           <a href="byui.edu/career/students/job-market-readiness">byui.edu/career/students/job-market-readiness</a>'+
-            '\n        </p>'+
-            '\n    </body>'+
-            '\n</html>';
+            '           <br>{your_name}<br>'+
+            '           Career Success Mentor<br>'+
+            '           BYU-I Career Center | MC 200 <br>'+ 
+            '           208.496.9825  <br>'+
+            '           <a href="byui.edu/career/students/job-market-readiness">byui.edu/career/students/job-market-readiness</a>'+
+            '        </p>'+
+            '    </body>'+
+            '</html>';
 
     //change newline to <br> tags
     html = html.replaceAll('\n', '<br/>');
