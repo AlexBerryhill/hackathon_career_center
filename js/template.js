@@ -13,14 +13,14 @@ function fillTemplateCards(){
         } 
         //listing all files using forEach
         files.forEach(function (file) {
-            template_cards += "<div class = 'template_card' onclick='fillTemplate("+'"'+file+'"'+", "+'"Alex",'+ '"4:20pm",'+ '"Denis"'+")'>" +file+"</div>";
+            template_cards += "<div class = 'template_card' onclick='fillTemplate("+'"'+file+'"'+", "+'"Alex",'+ '"4:20pm",'+ '"Denis",'+'"5/9/2022",'+'"Manwaring Center"'+")'>" +file+"</div>";
         });
         document.getElementById('template_cards_container').innerHTML=template_cards
         document.getElementById('template_cards_container').style.display='grid'
     });
 }
 
-function fillTemplate(template_name, name, time, your_name){
+function fillTemplate(template_name, name, time, your_name, date, location){
     var client = new XMLHttpRequest();
     client.open('GET', './templates/'+template_name);
     client.onreadystatechange = function() {
@@ -29,7 +29,7 @@ function fillTemplate(template_name, name, time, your_name){
         //Get Template from folder
         var template = client.responseText
         
-        template = template.replace('{name}', name).replace('{time}', time).replace('{your_name}', your_name)
+        template = template.replace('{name}', name).replace('{time}', time).replace('{your_name}', your_name).replace('{date}', date).replace('{location}', location);
         document.getElementById('template_cards_container').style.display='block'
         document.getElementById('template_cards_container').innerHTML=template
     }
