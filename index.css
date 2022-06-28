@@ -84,7 +84,7 @@ header{
 
 #name, #email, #time{
     border-right: groove;
-    border-radius: 5px;
+    border-radius: 20px;
     margin: auto;
     background-color: aliceblue;
     padding: 5px;

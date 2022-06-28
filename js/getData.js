@@ -117,3 +117,12 @@ async function openData(index){
 	html = ""
 }
 
+function getToday(){
+	const date = new Date();
+	const [month, day, year] = [date.getMonth()+1, date.getDate(), date.getFullYear()];
+	return month+'/'+day+'/'+year
+}
+
+function setDateToToday(){
+	document.getElementById('date').value=getToday()
+}
