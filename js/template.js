@@ -27,11 +27,40 @@ function fillTemplate(template_name, name, time, your_name){
         const directoryPath = path.join(__dirname, 'templates');
 
         //Get Template from folder
-        alert(client.responseText);
         var template = client.responseText
         
         template = template.replace('{name}', name).replace('{time}', time).replace('{your_name}', your_name)
         document.getElementById('template_cards_container').innerHTML=template
     }
     client.send();
+}
+
+function openTemplateCreater(){
+    html =  "<div>"+
+            "    <input type = 'text' name = 'template' placeholder='Title'></input>"+
+            "    <textarea name='template_text' id='template_text' cols='30' rows='10'></textarea>"+
+            "    <button onclick='createTemplate()'>Create</button>"+
+            "</div>"
+    document.getElementById('template_cards_container').innerHTML=html
+}
+
+function createTemplate(){
+    title = document.getElementById('template_title').value;
+    text = document.getElementById('template_text').value;
+    html =  '<!DOCTYPE html>'+
+            '    <html>'+
+            '    <head>'+
+            '        <base target="_top">'+
+            '    </head>'+
+            '    <body>'+
+            '        <p>'+
+                        text+
+            '           <br>{your_name}<br>'+
+            '           Career Success Mentor<br>'+
+            '           BYU-I Career Center | MC 200 <br>'+ 
+            '           208.496.9825  <br>'+
+            '           <a href="byui.edu/career/students/job-market-readiness">byui.edu/career/students/job-market-readiness</a>'+
+            '        </p>'+
+            '    </body>'+
+            '</html>';
 }

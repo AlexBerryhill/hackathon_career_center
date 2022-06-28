@@ -5,6 +5,10 @@ body{
     gap: 5px;
 }
 
+button{
+    cursor: pointer;
+}
+
 /* Sidebar */
 .sidebar{
     /* float: left; */
@@ -36,7 +40,6 @@ body{
 }
 
 #url_container button{
-    cursor: pointer;
     width: 35px;
     border-width: 1px;
     border-bottom-right-radius: 5px;
@@ -76,6 +79,10 @@ header{
 }
 
 /* Template Selection */
+#template_cards_container{
+    margin: 10px;
+}
+
 .template_card{
     cursor: pointer;
     border: groove;
@@ -85,4 +92,27 @@ header{
 
 .template_card:hover{
     background-color: aliceblue;
+}
+
+/* Footer */
+footer{
+    position: fixed;
+    bottom: 0px;
+
+    display: flex;
+    flex-direction: row;
+    -ms-flex-align: center;
+
+    background-color: blue;
+    
+    width: 100%;
+    height: 75px;
+}
+
+#select, #new, #send{
+    border-right: groove;
+    border-radius: 5px;
+    margin: auto;
+    background-color: aliceblue;
+    padding: 5px;
 }
