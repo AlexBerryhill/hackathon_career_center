@@ -62,8 +62,6 @@ app.on("activate", () => {
   if (win === null) {
     createWindow();
   }
-<<<<<<< HEAD
-=======
 });
 
 function SendIt() {
@@ -97,7 +95,6 @@ function SendIt() {
 ipcMain.on("SendIt", (event, args) => {
   console.log("ipcMain: Executing SendIt");
   SendIt();
->>>>>>> denos
 });
 
 // In this file you can include the rest of your app's specific main process

@@ -10,7 +10,11 @@
   <body>
     <div class="sidebar">
       <div id="url_container">
-        <input type="text" name="url" id="url" placeholder="url" />
+        <!-- <input type="text" name="url" id="url" placeholder="url"> -->
+        <input type="text" name="date" id="date" placeholder="1/1/2022" />
+        <script>
+          setDateToToday();
+        </script>
         <button id="submit" onclick="populateNames()">Sub</button>
       </div>
       <div id="name_container"></div>
@@ -21,6 +25,23 @@
       <div id="time">Time:</div>
     </header>
     <div id="template_cards_container"></div>
+
+    <footer>
+      <button class="footer_btn" id="select" onclick="fillTemplateCards()">
+        Select Template
+      </button>
+      <button
+        class="footer_btn"
+        id="delete"
+        onclick="fillDeleteTemplateCards()"
+      >
+        Delete Template
+      </button>
+      <button class="footer_btn" id="new" onclick="openTemplateCreater()">
+        Create Template
+      </button>
+      <button class="footer_btn" id="send" onclick="sendEmail()">Send</button>
+    </footer>
     <script>
       fillTemplateCards();
     </script>

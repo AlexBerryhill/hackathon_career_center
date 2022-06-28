@@ -3,6 +3,16 @@ body{
     grid-template-columns: 160px auto;
     grid-template-rows: 50px auto;
     gap: 5px;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+button{
+    cursor: pointer;
+}
+
+button:hover{
+    font-weight: 600;
 }
 
 /* Sidebar */
@@ -36,7 +46,6 @@ body{
 }
 
 #url_container button{
-    cursor: pointer;
     width: 35px;
     border-width: 1px;
     border-bottom-right-radius: 5px;
@@ -45,6 +54,13 @@ body{
 
 .appointment{
     border: thin black;
+    cursor: pointer;
+}
+
+.appointment:hover{
+    background-color: lightgray;
+    border: groove;
+    border-radius: 10px;
 }
 
 .appointment p{
@@ -69,20 +85,62 @@ header{
 
 #name, #email, #time{
     border-right: groove;
-    border-radius: 5px;
+    border-radius: 20px;
     margin: auto;
     background-color: aliceblue;
     padding: 5px;
 }
 
 /* Template Selection */
+#template_cards_container{
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+    gap: 50px;
+}
+
 .template_card{
     cursor: pointer;
     border: groove;
     border-radius: 5px;
     margin: 5px;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
 }
 
 .template_card:hover{
     background-color: aliceblue;
+    font-weight: 600;
+}
+
+.delete_template{
+    color: red;
+}
+
+.full_grid{
+    grid-column: 1 / span 3;
+}
+
+/* Footer */
+footer{
+    position: fixed;
+    bottom: 0px;
+
+    display: flex;
+    flex-direction: row;
+    -ms-flex-align: center;
+
+    background-color: blue;
+    
+    width: 100%;
+    height: 75px;
+}
+
+.footer_btn{
+    border-right: groove;
+    border-radius: 20px;
+    margin: auto;
+    background-color: aliceblue;
+    padding: 20px;
 }
