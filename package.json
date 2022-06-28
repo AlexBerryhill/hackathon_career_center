@@ -18,13 +18,15 @@
   },
   "homepage": "https://github.com/AlexBerryhill/hackathon_career_center#readme",
   "devDependencies": {
-    "electron": "^19.0.6",
-    "electron-packager": "^15.5.1"
+    "electron": "^19.0.6"
   },
   "dependencies": {
     "dotenv": "^16.0.1",
     "electron-fetch": "^1.7.4",
+    "ical": "^0.8.0",
+    "node-ical": "^0.15.1",
     "nodemailer": "^6.7.5",
-    "nodemailer-smtp-transport": "^2.7.4"
+    "nodemailer-smtp-transport": "^2.7.4",
+    "request-promise": "^4.2.6"
   }
 }
