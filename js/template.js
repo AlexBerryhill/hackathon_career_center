@@ -16,6 +16,7 @@ function fillTemplateCards(){
             template_cards += "<div class = 'template_card' onclick='fillTemplate("+'"'+file+'"'+", "+'"Alex",'+ '"4:20pm",'+ '"Denis"'+")'>" +file+"</div>";
         });
         document.getElementById('template_cards_container').innerHTML=template_cards
+        document.getElementById('template_cards_container').style.display='grid'
     });
 }
 
@@ -29,6 +30,7 @@ function fillTemplate(template_name, name, time, your_name){
         var template = client.responseText
         
         template = template.replace('{name}', name).replace('{time}', time).replace('{your_name}', your_name)
+        document.getElementById('template_cards_container').style.display='block'
         document.getElementById('template_cards_container').innerHTML=template
     }
     client.send();
@@ -83,4 +85,34 @@ function sendEmail(){
     body = document.getElementById('template_cards_container').value
     
     window.open('mailto:'+email+'?subject="subject"&body='+body)
+}
+
+function deleteTemplate(template_name){
+    // delete a file
+    try {
+        fs.unlinkSync("./templates/"+template_name);
+        fillDeleteTemplateCards()
+        console.log("File is deleted.");
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+function fillDeleteTemplateCards(){
+    //joining path of directory 
+    const directoryPath = path.join(__dirname, 'templates');
+    var template_cards = ''
+    //passsing directoryPath and callback function
+    fs.readdir(directoryPath, function (err, files) {
+        //handling error
+        if (err) {
+            return console.log('Unable to scan directory: ' + err);
+        } 
+        //listing all files using forEach
+        files.forEach(function (file) {
+            template_cards += "<div class = 'template_card delete_template' onclick='deleteTemplate("+'"'+file+'"'+")'>" +file+"</div>";
+        });
+        document.getElementById('template_cards_container').innerHTML=template_cards
+        document.getElementById('template_cards_container').style.display='grid'
+    });
 }
