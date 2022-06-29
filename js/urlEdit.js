@@ -13,11 +13,9 @@ function checkIfUrl(value){
 
     // Check is the value that was clicked
     var check = value.target;
-    console.log(check);
 
     // If the element you clicked is a link
     if(check.getAttribute('href') !== null){
-        console.log(check.getAttribute('href'));
 
         // Open the modal for that link
         loadHref(check.textContent, 
@@ -31,16 +29,15 @@ function loadHref(text, url, id){
 document.querySelector("#urltext").value = text;
 document.querySelector("#urllink").value = url;
 document.querySelector("#id").value = id;
-console.log(document.getElementById("urlpopup"));
 document.getElementById("urlpopup").style.display='block';
 }
 
 // A function that will change the content of the selected tag
 function editHref(form){
-    
+
     // Update the inner html and href of the link, rehide the modal
-    document.getElementById(form.id).innerhtml = form.urltext;
-    document.getElementById(form.id).href = form.urllink;
+    document.getElementById(form.id.value).textContent = form.urltext.value;
+    document.getElementById(form.id.value).href = form.urllink.value;
     document.getElementById("urlpopup").style.display='none';
     
     // Return true for.. validation purposes?
