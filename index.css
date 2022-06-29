@@ -21,6 +21,7 @@ button:hover{
 
 .url-popup {
     display: none;
+    position: fixed;
     top: 50%;
     left: 50%;
     border: 1px solid black;

@@ -31,7 +31,8 @@ function loadHref(text, url, id){
 document.querySelector("#urltext").value = text;
 document.querySelector("#urllink").value = url;
 document.querySelector("#id").value = id;
-document.getElementById("urlpopup").style.display='fixed';
+console.log(document.getElementById("urlpopup"));
+document.getElementById("urlpopup").style.display='block';
 }
 
 // A function that will change the content of the selected tag

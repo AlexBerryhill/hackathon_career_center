@@ -102,6 +102,26 @@ async function getEvents(url, date, email){
 
 }
 
+function getUserData(){
+	return fs.readFile('./json/userData.json', 'utf-8', (err, data) => {
+        if (err) {
+            throw err;
+        }
+
+        // parse JSON object
+        const user = JSON.parse(data.toString());
+		
+		// print JSON object
+        console.log(user);
+
+		return user
+    });
+}
+
+function getCalendarUrl(){
+	user = "";
+}
+
 async function populateNames(){
 	var appointments = await getEvents(document.getElementById('url').value, document.getElementById('date').value, document.getElementById('email').value)
 	console.log(appointments)
