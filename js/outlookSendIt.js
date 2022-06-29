@@ -1,12 +1,35 @@
 var nodemailer = require("nodemailer");
 require("dotenv").config();
 
+async function getUserData() {
+  let userData = require("./json/userData.json");
+
+  return userData;
+}
+
+function getUserEmail() {
+  return getUserData().then((user) => {
+    // console.log(user);
+    return user.email;
+  });
+}
+
+function getUserPassword() {
+  return getUserData().then((user) => {
+    // console.log(user);
+    return user.password;
+  });
+}
+
 // Create the transporter with the required configuration for Outlook
 // change the user and pass !
 
-function sendIt() {
+async function sendIt() {
+  var email = await getUserEmail();
+  var password = await getUserPassword();
   let content = document.getElementById("template_cards_container").children;
-  let message = content[0].innerHTML;
+  let message = content[1].innerHTML;
+  let recipient = document.getElementById("recipient_email").value;
   "template_cards_container".textContent;
 
   var transporter = nodemailer.createTransport({
@@ -17,15 +40,15 @@ function sendIt() {
       ciphers: "SSLv3",
     },
     auth: {
-      user: process.env.OUTLOOK,
-      pass: process.env.OUTLOOKPASSWORD,
+      user: email,
+      pass: password,
     },
   });
 
   // setup e-mail data, even with unicode symbols
   var mailOptions = {
     from: `"Our Code TESTING " <${process.env.OUTLOOK}>`, // sender address (who sends)
-    to: "denislazo1610@gmail.com", // list of receivers (who receives)
+    to: recipient, // list of receivers (who receives)
     subject: "Hello ", // Subject line
     text: "Hello world ", // plaintext body
     html: message, // html body
@@ -42,10 +65,9 @@ function sendIt() {
 }
 
 // function sendIt() {
-//   var message = document.getElementById("template_cards_container");
+//   let content = document.getElementById("recipient_email").value;
 
-//   let content = message.children;
-//   console.log(content[1].innerHTML);
+//   console.log(content);
 // }
 
 module.exports = { sendIt };
