@@ -31,7 +31,11 @@ function fillTemplateCards() {
         "</div>";
       */
 
-      template_cards += "<div class = 'template_card' onclick = 'callFillTemplate(" + '"' + file + '"' + ")'> " + file + "</div>";
+      fileSub = file.split(".");
+      fileSub.pop();
+      fileTitle = fileSub.join("");
+
+      template_cards += "<div class = 'template_card' onclick = 'callFillTemplate(" + '"' + file + '"' + ")'> " + fileTitle + "</div>";
 
         //document.getElementById('yourName').innerHTML
     });
@@ -62,18 +66,20 @@ function fillTemplate(template_name, name, time, your_name, date, location) {
 
     // Fill in user and event data
     template = template
-      .replace("{name}", name)
-      .replace("{time}", time)
-      .replace("{your_name}", your_name)
-      .replace("{date}", date)
-      .replace("{location}", location);
+      .replace(/{name}/g, name)
+      .replace(/{time}/g, time)
+      .replace(/{your_name}/g, your_name)
+      .replace(/{date}/g, date)
+      .replace(/{location}/g, location);
 
-    page = ""+
+    page = "<div id='filled-template'>"+
     "<div>"+
-    "   <input type='email' class='modal_input' name='recipient_email' id='recipient_email' placeholder='Recipient'>"+
+    "   <input type='email' name='recipient_email' id='recipient_email' placeholder='Recipient'>"+
     "</div>"+
     "<div id='email_content'>"+
-        template+
+        template +
+    "</div>" + 
+    "<button class='send_btn' id='send' onclick='sendIt()'>Send</button>" +
     "</div>"
     // Fill template_cards_container
     document.getElementById("template_cards_container").style.display = "block";
@@ -84,19 +90,21 @@ function fillTemplate(template_name, name, time, your_name, date, location) {
 }
 
 function openTemplateCreater() {
+  document.getElementById("template_cards_container").style.display = "grid";
   html =
-    "<div class = 'full_grid'>" +
-    "    <input type = 'text' name = 'template_title' id = 'template_title' placeholder='Title'></input>" +
-    "    <textarea name='template_text' id='template_text' cols='60' rows='20' placeholder='content'></textarea>" +
-    "    <button onclick='createTemplate()'>Create</button>" +
+    "<div class = 'left_grid'>" +
+    "    <input type = 'text' name = 'template_title' id = 'template_title' placeholder='Title'></input><br>" +
+    "    <textarea name='template_text' id='template_text' cols='60' rows='20' placeholder='Body'></textarea><br>" +
+    "    <button id = 'template_button' onclick='createTemplate()'>Create</button>" +
     "</div>" +
-    "<div class='full_grid'>" +
-    "    Key:<br>" +
+    "<div class='right_grid'>" +
+    "    Key:<br><br>" +
     "    <nbsp>{name} = Recipient Name<br>" +
-    "    <nbsp>{time} = Time(hour/minute)<br>" +
-    "    <nbsp>{location} = Zoom/In Person<br>" +
-    "    <nbsp>{your_name} = Your (Mentor) Name<br>" +
-    "    The complimentary close is already included";
+    "    <nbsp>{time} = Time (hour:minute)<br>" +
+    "    <nbsp>{location} = Meeting location<br>" +
+    "    <nbsp>{date} = The date of your meeting<br>" +
+    "    <nbsp>{your_name} = Your (Mentor) Name<br><br>" +
+    "    The signature block is already included";
   ("</div>");
   document.getElementById("template_cards_container").innerHTML = html;
 }
@@ -108,13 +116,13 @@ function createTemplate() {
     "<!DOCTYPE html>" +
     "<html>" +
     "    <body>" +
-    "        <p>" +
+    "        <p contenteditable='true' onclick='checkIfUrl(event)' id='template-edit-paragraph'>" +
     text +
-    "           <br>{your_name}<br>" +
+    "           <br>{your_name},<br>" +
     "           Career Success Mentor<br>" +
     "           BYU-I Career Center | MC 200 <br>" +
     "           208.496.9825  <br>" +
-    '           <a href="byui.edu/career/students/job-market-readiness">byui.edu/career/students/job-market-readiness</a>' +
+    '           <a href="byui.edu/career/students/job-market-readiness" id="00">byui.edu/career/students/job-market-readiness</a>' +
     "        </p>" +
     "    </body>" +
     "</html>";
@@ -156,13 +164,18 @@ function fillDeleteTemplateCards() {
     }
     //listing all files using forEach
     files.forEach(function (file) {
+
+      fileSub = file.split(".");
+      fileSub.pop();
+      fileTitle = fileSub.join("");
+
       template_cards +=
         "<div class = 'template_card delete_template' onclick='deleteTemplate(" +
         '"' +
         file +
         '"' +
-        ")'>" +
-        file +
+        ")'>Delete " +
+        fileTitle +
         "</div>";
     });
     document.getElementById("template_cards_container").innerHTML =
