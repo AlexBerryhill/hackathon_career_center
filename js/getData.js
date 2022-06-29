@@ -102,28 +102,36 @@ async function getEvents(url, date, email){
 
 }
 
-function getUserData(){
-	return fs.readFile('./json/userData.json', 'utf-8', (err, data) => {
+async function getUserData(){
+	const userData = await fs.readFileSync('./json/userData.json', 'utf-8', (err, data) => {
         if (err) {
             throw err;
         }
-
-        // parse JSON object
-        const user = JSON.parse(data.toString());
-		
+		// parse JSON object
+		const user = JSON.parse(data.toString());
+				
 		// print JSON object
-        console.log(user);
+		console.log(user);
 
-		return user
+		return user;
     });
+
+	//console.log(userData);
+
+	return userData;
 }
 
-function getCalendarUrl(){
-	user = "";
+async function getCalendarUrl(){
+	return getUserData().then(user => {
+		console.log(user);
+		return user.url;
+	});
 }
 
 async function populateNames(){
-	var appointments = await getEvents(document.getElementById('url').value, document.getElementById('date').value, document.getElementById('email').value)
+	var url = await getCalendarUrl();
+	console.log(url);
+	var appointments = await getEvents(url, document.getElementById('date').value, document.getElementById('email').value)
 	console.log(appointments)
 	var appointment_div = []
 	//For every appointment put the student into the sidebar
@@ -135,7 +143,8 @@ async function populateNames(){
 }
 
 async function openData(index){
-	var appointments = await getEvents(document.getElementById('url').value, document.getElementById('date').value, document.getElementById('email').value)
+	var url = await getCalendarUrl();
+	var appointments = await getEvents(url, document.getElementById('date').value, document.getElementById('email').value)
 	const person = appointments[index]
 	document.getElementById('name').innerHTML=person.FirstName + " " + person.LastName;
 	document.getElementById('yourName').innerHTML=person.oFirstName + " " + person.oLastName;
