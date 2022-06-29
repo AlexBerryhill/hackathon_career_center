@@ -6,8 +6,11 @@ require("dotenv").config();
 async function sendIt() {
   var GMAIL = await getUserEmail();
   var GMAILPASSWORD = await getUserPassword();
-  let content = document.getElementById("filled-template").children;
-  let MESSAGE = content[1].innerHTML;
+  let content = document.getElementById("filled-template").children[1].children;
+  let HEADER = content[0].innerHTML;
+  let MESSAGE = "<!DOCTYPE html><html><body>" + 
+  content[1].innerHTML +
+  "</body></html>";
   let RECIPIENT = document.getElementById("recipient_email").value;
   "filled-template".textContent;
   
@@ -25,8 +28,8 @@ async function sendIt() {
   var mailOptions = {
     from: GMAIL,
     to: RECIPIENT,
-    subject: "Subject TBD",
-    text: MESSAGE,
+    subject: HEADER,
+    html: MESSAGE,
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
