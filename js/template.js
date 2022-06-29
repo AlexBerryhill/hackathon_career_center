@@ -125,6 +125,7 @@ function createTemplate() {
   });
 }
 
+// Depricated
 function sendEmail() {
   email = "amsb99@gmail.com";
   body = document.getElementById("template_cards_container").value;

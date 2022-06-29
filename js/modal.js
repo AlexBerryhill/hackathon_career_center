@@ -6,3 +6,7 @@ function openModal() {
 function closeModal() {
     document.getElementById("modal_container").style.display = "none";
 }
+
+function saveData(form){
+    
+}

@@ -57,7 +57,7 @@
         <h1>Fill Data</h1>
         <p id="close_modal" onclick="closeModal()">x</p>
       </div>
-      <form action="">
+      <form action="javascript:;" onsubmit="return saveData(this)">
         <input type="text" class="modal_input" name="url" id="url" placeholder="Calendar Url"></input>
         <input type="email" class="modal_input" name="email" id="email" placeholder="Outlook E-mail"></input>
         <input type="password" class="modal_input" name="password" id="password" placeholder="Outlook Password"></input>
