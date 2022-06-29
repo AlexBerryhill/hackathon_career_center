@@ -57,17 +57,21 @@ function fillTemplate(template_name, name, time, your_name, date, location) {
   client.onreadystatechange = function () {
     const directoryPath = path.join(__dirname, "templates");
 
-    //Get Template from folder
+    // Get Template from folder
     var template = client.responseText;
 
+    // Fill in user and event data
     template = template
       .replace("{name}", name)
       .replace("{time}", time)
       .replace("{your_name}", your_name)
       .replace("{date}", date)
       .replace("{location}", location);
+
+    // Fill template_cards_container
     document.getElementById("template_cards_container").style.display = "block";
     document.getElementById("template_cards_container").innerHTML = template;
+
   };
   client.send();
 }

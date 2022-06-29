@@ -67,7 +67,7 @@ async function getEvents(url, date, email){
 				let oEmail = ev.organizer.val.substr(7);
 
 				// If the email matches eg we are looking at the meetings of the right person, or if no email is provided
-				if (oEmail == email || email == "") {
+				if (/*oEmail == email || email == ""*/true) {
 	
 					// Split each word from the summary
 					let summary = ev.summary.split(" ");

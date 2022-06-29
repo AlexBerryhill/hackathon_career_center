@@ -6,12 +6,9 @@
     <link rel="stylesheet" href="./index.css" />
     <script src="./js/getData.js"></script>
     <script src="./js/template.js"></script>
-<<<<<<< Updated upstream
     <script src="./js/outlookSendIt.js"></script>
-=======
     <script src="./js/modal.js"></script>
     <script src="./js/urlEdit.js"></script>
->>>>>>> Stashed changes
   </head>
   <body>
     <div class="sidebar">
@@ -52,18 +49,33 @@
       </button>
       <button class="footer_btn" id="send" onclick="sendIt()">Send</button>
     </footer>
+
+    <!-- Settings Modal -->
     <div id="modal_container">
       <div id="modal_head">
         <h1>Fill Data</h1>
         <p id="close_modal" onclick="closeModal()">x</p>
       </div>
-      <form action="javascript:;" onsubmit="return saveData(this)">
+      <form action="javascript:;" onsubmit="return saveUserData(this)">
         <input type="text" class="modal_input" name="url" id="url" placeholder="Calendar Url"></input>
         <input type="email" class="modal_input" name="email" id="email" placeholder="Outlook E-mail"></input>
         <input type="password" class="modal_input" name="password" id="password" placeholder="Outlook Password"></input>
         <input type="submit" class="modal_input" name="modal_submit" id="modal_submit">
       </form>
     </div>
+
+    <!-- popup for editing urls-->
+    <div id="url-popup">
+        <form id="urlbody" action="javascript:;" onsubmit="return editHref(this);">
+            <label for = "urltext">Link Text<label>
+            <input type = "text" id="urltext" name="urltext" value="TBD">
+            <label for = "urllink">Link URL</label>
+            <input type = "text" id="urllink" name="urllink" value="TBD">
+            <input type = "hidden" id="id" name="id" value="TBD">
+            <input type="submit" value="submit">
+        </form>
+    </div>
+    
     <script>
       fillTemplateCards();
     </script>

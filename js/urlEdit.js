@@ -7,10 +7,13 @@
 //   });
 // });
 
-document.addEventListener("click", checkIfUrl)
+//document.addEventListener("click", checkIfUrl(event.target))
 
-function checkIfUrl(){
-
+function checkIfUrl(value){
+    var check = value.target;
+    if(check.attr('href' !== 'undefined')){
+        loadHref(check.textContent, check.getAttribute('href'), check.getAttribue('id'));
+    }
 }
 
 //fill in the popup with the current values from the url
