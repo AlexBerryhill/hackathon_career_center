@@ -21,6 +21,7 @@ let months = [
 // Event class to pass data on to be used in the actual email process
 class Event {
   constructor(
+    rtime,
     date,
     time,
     location,
@@ -29,8 +30,10 @@ class Event {
     email,
     oFirstName,
     oLastName,
-    oEmail
+    oEmail,
+    noDate
   ) {
+    this.rtime = rtime;
     this.date = date;
     this.time = time;
     this.location = location;
@@ -40,6 +43,7 @@ class Event {
     this.oFirstName = oFirstName;
     this.oLastName = oLastName;
     this.oEmail = oEmail;
+    this.noDate = noDate;
   }
 }
 
@@ -49,7 +53,7 @@ ical.fromURLNoSuck = function (url, opts, cb) {
     // Terminate the program
     return;
   // Otherwise return a promise that will resolve to their functions returned value
-  return requestPromise(url).then((data) => {
+  return requestPromise(url, opts).then((data) => {
     // Run their function
     return cb(undefined, ical.parseICS(data));
   });
@@ -75,7 +79,7 @@ async function getEvents(url, date, email){
 	  
 			  // If the date of the meeting
 			  let meetingDate = (ev.start.getMonth() + 1) + "/" + ev.start.getDate() + "/" + (ev.start.getYear() + 1900);
-			  console.log(meetingDate + " - " + date);
+			  //console.log(meetingDate + " - " + date);
 			  if (date == meetingDate || date == "") {
 
 				// Get the email that the meeting uses
@@ -97,19 +101,23 @@ async function getEvents(url, date, email){
 					let email = "jdoe@yahoo.com";
 					
 					// Add it to the list of todays events
-					todaysEvents.push(new Event(months[ev.start.getMonth()] + " " + ev.start.getDate() + ", " + (ev.start.getYear() + 1900), ev.start.toLocaleTimeString("en-US", {timeStyle: "short"}), ev.location, fname, lname, email, oFname, oLname, oEmail));
+					todaysEvents.push(new Event(ev.start, months[ev.start.getMonth()] + " " + ev.start.getDate() + ", " + (ev.start.getYear() + 1900), ev.start.toLocaleTimeString("en-US", {timeStyle: "short"}), ev.location, fname, lname, email, oFname, oLname, oEmail, (date == "")));
 			  	}
 			  }
 			}
 		  }
 		}
+
+    // Sort appointments by date and time
+    var sortedEvents = todaysEvents.sort((a, b) => a.rtime - b.rtime);
 	
-	  return todaysEvents;
+	  return sortedEvents;
 		
 	  });
 }
 
 async function getUserData(){
+  delete require.cache[require.resolve('./json/userData.json')];
 	let userData = require('./json/userData.json');
 	return userData;
 }
@@ -132,28 +140,66 @@ function getUserPassword(){
 	});
 }
 
+function nameFunc(i, ele){
+  
+  // Load the data associated with the name, and load the templates
+  openData(i);
+  fillTemplateCards();
+  console.log(ele);
+
+  // A list of the elements to deselect
+  let names = document.getElementsByClassName("appointment");
+  var namesArr = [].slice.call(names);
+
+  // The element to select
+  let selected = document.getElementById("appoint" + i);
+
+  //console.log(namesArr);
+
+  namesArr.forEach(function (ele) {
+    ele.classList.remove('selected');
+  });
+
+  selected.classList.add('selected');
+
+}
+
 async function populateNames() {
   var url = await getCalendarUrl();
-  console.log(url);
+
+  //console.log(url);
   var appointments = await getEvents(
     url,
     document.getElementById("date").value,
-    document.getElementById("email").value
+    getUserEmail()
   );
-  console.log(appointments);
+
+  // console.log(appointments);
   var appointment_div = [];
-  //For every appointment put the student into the sidebar
+
+  // For every appointment put the student into the sidebar
   for (var i = 0; i < appointments.length; i++) {
+  
+    // We are using this so if a date is defined we dont list it on the sidebar
+    let temp = "";
+
+    if (appointments[i].noDate) {
+      temp = appointments[i].date + " ";
+    }
+
     appointment_div +=
-      "<div class='appointment' onclick='openData(" +
+      "<div class='appointment' id = 'appoint" + i + "' onclick='nameFunc(" +
       i +
-      ")'><p>" +
+      ", this);'><p>" +
       appointments[i].FirstName +
       " " +
       appointments[i].LastName +
+      "<br>" + 
+      temp +
+      appointments[i].time +
       "</p></div>";
   }
-  console.log(appointment_div);
+  //console.log(appointment_div);
   document.getElementById("name_container").innerHTML = appointment_div;
 }
 
@@ -162,7 +208,7 @@ async function openData(index) {
   var appointments = await getEvents(
     url,
     document.getElementById("date").value,
-    document.getElementById("email").value
+    getUserEmail()
   );
   const person = appointments[index];
   document.getElementById("name").innerHTML =
