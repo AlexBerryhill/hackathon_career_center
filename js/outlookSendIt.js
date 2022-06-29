@@ -1,36 +1,16 @@
 var nodemailer = require("nodemailer");
 require("dotenv").config();
 
-async function getUserData() {
-  let userData = require("./json/userData.json");
-
-  return userData;
-}
-
-function getUserEmail() {
-  return getUserData().then((user) => {
-    // console.log(user);
-    return user.email;
-  });
-}
-
-function getUserPassword() {
-  return getUserData().then((user) => {
-    // console.log(user);
-    return user.password;
-  });
-}
-
 // Create the transporter with the required configuration for Outlook
 // change the user and pass !
 
 async function sendIt() {
   var email = await getUserEmail();
   var password = await getUserPassword();
-  let content = document.getElementById("template_cards_container").children;
+  let content = document.getElementById("filled-template").children;
   let message = content[1].innerHTML;
   let recipient = document.getElementById("recipient_email").value;
-  "template_cards_container".textContent;
+  "filled-template".textContent;
 
   var transporter = nodemailer.createTransport({
     host: "smtp-mail.outlook.com", // hostname
