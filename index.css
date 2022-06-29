@@ -19,7 +19,7 @@ button:hover{
     display: none;
 }
 
-.url-popup {
+#urlpopup {
     display: none;
     position: fixed;
     top: 50%;
