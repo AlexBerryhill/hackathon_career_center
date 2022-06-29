@@ -6,6 +6,8 @@ const { sendIt } = require("./js/outlookSendIt");
 
 sendIt();
 
+//to download exe
+//npx electron-packager .
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
