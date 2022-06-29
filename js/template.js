@@ -13,6 +13,8 @@ function fillTemplateCards() {
     }
     //listing all files using forEach
     files.forEach(function (file) {
+
+      /*
       template_cards +=
         "<div class = 'template_card' onclick='fillTemplate(" +
         '"' +
@@ -27,6 +29,11 @@ function fillTemplateCards() {
         ")'>" +
         file +
         "</div>";
+      */
+
+      template_cards += "<div class = 'template_card' onclick = 'callFillTemplate(" + '"' + file + '"' + ")'> " + file + "</div>";
+
+        //document.getElementById('yourName').innerHTML
     });
     document.getElementById("template_cards_container").innerHTML =
       template_cards;
@@ -34,6 +41,14 @@ function fillTemplateCards() {
   });
   document.getElementById("template_cards_container").innerHTML =
     template_cards;
+}
+
+function callFillTemplate(file){
+  fillTemplate(file, document.getElementById('name').innerHTML, 
+  document.getElementById('time').innerHTML, 
+  document.getElementById('yourName').innerHTML, 
+  document.getElementById('dateMeet').innerHTML, 
+  document.getElementById('location').innerHTML);
 }
 
 function fillTemplate(template_name, name, time, your_name, date, location) {
@@ -154,3 +169,4 @@ function fillDeleteTemplateCards() {
     document.getElementById("template_cards_container").style.display = "grid";
   });
 }
+

@@ -15,6 +15,21 @@ button:hover{
     font-weight: 600;
 }
 
+.hidden {
+    display: none;
+}
+
+.url-popup {
+    display: none;
+    top: 50%;
+    left: 50%;
+    border: 1px solid black;
+    z-index: 10;
+    background-color: white;
+    width: 500px;
+    max-width: 80%;
+}
+
 /* Sidebar */
 .sidebar{
     /* float: left; */
@@ -155,6 +170,53 @@ footer{
 }
 
 /* Modal */
-.modal_container{
-    
+#modal_container{
+    display: none;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    padding: 0px;
+    z-index: 1;
+    position:fixed;
+    top: 15%;
+    left: 15%;
+    height: 80%;
+    width: 80%;
+}
+
+#modal_head{
+    border-bottom: groove;
+    display: grid;
+    grid-template-columns: auto 30px;
+}
+
+#modal_head h1{
+    margin: auto;
+}
+
+#close_modal{
+    cursor: pointer;
+    top: 15px;
+    right: 15px;
+}
+
+#modal_container form{
+    display: flex;
+    flex-direction: column;
+}
+
+.modal_input{
+    border-right: groove;
+    border-radius: 20px;
+    background-color: aliceblue;
+    width: 80%;
+
+    margin: 20px auto;
+    padding: 5px;
+}
+
+#modal_submit{
+    cursor: pointer;
+}
+#modal_submit:hover, #close_modal:hover {
+    font-weight: 600;
 }

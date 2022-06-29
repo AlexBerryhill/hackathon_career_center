@@ -43,7 +43,7 @@ ical.fromURLNoSuck = function(url, opts, cb){
 // 	.then(res => res.text())
 // 	.then(body => console.log(body))
 
-async function getEvents(url, date){
+async function getEvents(url, date, email){
   
 	let todaysEvents = [];
 	
@@ -61,22 +61,29 @@ async function getEvents(url, date){
 			  // If the date of the meeting
 			  let meetingDate = ev.start.getMonth() + "/" + ev.start.getDate() + "/" + (ev.start.getYear() + 1900);
 			  console.log(meetingDate + " - " + date);
-			  if (date == meetingDate) {
-	
-				let summary = ev.summary.split(" ");
-				
-				// Get users name and organizers name
-				let oFname = summary[summary.indexOf("and") + 1];
-				let oLname = summary[summary.indexOf("and") + 2];
-				let fname = summary[summary.indexOf("with") + 1];
-				let lname = summary[summary.indexOf("with") + 2];
+			  if (date == meetingDate || date == "") {
 
-				// Get organizers email
+				// Get the email that the meeting uses
 				let oEmail = ev.organizer.val.substr(7);
-				let email = "jdoe@yahoo.com";
-				
-				// Add it to the list of todays events
-				todaysEvents.push(new Event(months[ev.start.getMonth()] + " " + ev.start.getDate() + ", " + (ev.start.getYear() + 1900), ev.start.toLocaleTimeString("en-US", {timeStyle: "short"}), ev.location, fname, lname, email, oFname, oLname, oEmail));
+
+				// If the email matches eg we are looking at the meetings of the right person, or if no email is provided
+				if (oEmail == email || email == "") {
+	
+					// Split each word from the summary
+					let summary = ev.summary.split(" ");
+					
+					// Get users name and organizers name
+					let oFname = summary[summary.indexOf("and") + 1];
+					let oLname = summary[summary.indexOf("and") + 2];
+					let fname = summary[summary.indexOf("with") + 1];
+					let lname = summary[summary.indexOf("with") + 2];
+
+					// Get organizers email
+					let email = "jdoe@yahoo.com";
+					
+					// Add it to the list of todays events
+					todaysEvents.push(new Event(months[ev.start.getMonth()] + " " + ev.start.getDate() + ", " + (ev.start.getYear() + 1900), ev.start.toLocaleTimeString("en-US", {timeStyle: "short"}), ev.location, fname, lname, email, oFname, oLname, oEmail));
+			  	}
 			  }
 			}
 		  }
@@ -96,7 +103,7 @@ async function getEvents(url, date){
 }
 
 async function populateNames(){
-	var appointments = await getEvents(document.getElementById('url').value, document.getElementById('date').value)
+	var appointments = await getEvents(document.getElementById('url').value, document.getElementById('date').value, document.getElementById('email').value)
 	console.log(appointments)
 	var appointment_div = []
 	//For every appointment put the student into the sidebar
@@ -108,11 +115,13 @@ async function populateNames(){
 }
 
 async function openData(index){
-	var appointments = await getEvents(document.getElementById('url').value, document.getElementById('date').value)
+	var appointments = await getEvents(document.getElementById('url').value, document.getElementById('date').value, document.getElementById('email').value)
 	const person = appointments[index]
-	document.getElementById('name').innerHTML='Name: ' + person.FirstName;
-	document.getElementById('email').innerHTML='Email: ' + person.email;
-	document.getElementById('time').innerHTML='Time: ' + person.time;
+	document.getElementById('name').innerHTML=person.FirstName + " " + person.LastName;
+	document.getElementById('yourName').innerHTML=person.oFirstName + " " + person.oLastName;
+	document.getElementById('dateMeet').innerHTML=person.date;
+	document.getElementById('time').innerHTML=person.time;
+	document.getElementById('location').innerHTML=person.location;
 
 	html = ""
 }

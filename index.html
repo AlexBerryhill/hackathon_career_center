@@ -6,7 +6,12 @@
     <link rel="stylesheet" href="./index.css" />
     <script src="./js/getData.js"></script>
     <script src="./js/template.js"></script>
+<<<<<<< Updated upstream
     <script src="./js/outlookSendIt.js"></script>
+=======
+    <script src="./js/modal.js"></script>
+    <script src="./js/urlEdit.js"></script>
+>>>>>>> Stashed changes
   </head>
   <body>
     <div class="sidebar">
@@ -21,10 +26,12 @@
       <div id="name_container"></div>
     </div>
     <header>
-      <div id="name">Name:</div>
-      <div id="email">Email:</div>
-      <div id="time">Time:</div>
-      <div class="img_container">
+      <div id="name" class="hidden">Jack Black</div>
+      <div id="yourName" class="hidden">A frying pan</div>
+      <div id="dateMeet" class="hidden">2/30/2020</div>
+      <div id="time" class="hidden">16:15 PM</div>
+      <div id="location" class="hidden">School of Rock</div>
+      <div class="img_container" onclick="openModal()">
           <img src="./assets/user.png" alt="User Icon">
       </div>
     </header>
@@ -37,8 +44,7 @@
       <button
         class="footer_btn"
         id="delete"
-        onclick="fillDeleteTemplateCards()"
-      >
+        onclick="fillDeleteTemplateCards()">
         Delete Template
       </button>
       <button class="footer_btn" id="new" onclick="openTemplateCreater()">
@@ -46,6 +52,18 @@
       </button>
       <button class="footer_btn" id="send" onclick="sendIt()">Send</button>
     </footer>
+    <div id="modal_container">
+      <div id="modal_head">
+        <h1>Fill Data</h1>
+        <p id="close_modal" onclick="closeModal()">x</p>
+      </div>
+      <form action="">
+        <input type="text" class="modal_input" name="url" id="url" placeholder="Calendar Url"></input>
+        <input type="email" class="modal_input" name="email" id="email" placeholder="Outlook E-mail"></input>
+        <input type="password" class="modal_input" name="password" id="password" placeholder="Outlook Password"></input>
+        <input type="submit" class="modal_input" name="modal_submit" id="modal_submit">
+      </form>
+    </div>
     <script>
       fillTemplateCards();
     </script>
