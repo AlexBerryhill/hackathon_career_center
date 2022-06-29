@@ -133,14 +133,6 @@ function createTemplate() {
   });
 }
 
-// Depricated
-function sendEmail() {
-  email = "amsb99@gmail.com";
-  body = document.getElementById("template_cards_container").value;
-
-  window.open("mailto:" + email + '?subject="subject"&body=' + body);
-}
-
 function deleteTemplate(template_name) {
   // delete a file
   try {
