@@ -174,13 +174,13 @@ header {
   height: 200px;
   max-height: 350px;
   min-height: 100px;
-  margin: 10px 0;
+  margin: 4px 0;
   border-radius: 10px;
   padding: 10px;
   box-sizing: border-box;
 }
 
-#template_title {
+#template_title, #template_header {
   width: 80%;
   border-radius: 10px;
   text-align: center;
@@ -195,7 +195,7 @@ header {
   border: groove;
 }
 
-#template-edit-paragraph {
+#template-edit-paragraph, #template-edit-header {
   background-color: #FFFFFF;
   border: 1px dashed red;
   border-radius: 4px;
