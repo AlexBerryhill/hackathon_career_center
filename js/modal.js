@@ -31,5 +31,7 @@ function saveUserData(){
         }
         console.log("JSON data is saved.");
     });
+
+    closeModal();
     return true;
 }
