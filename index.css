@@ -91,6 +91,15 @@ header{
     padding: 5px;
 }
 
+.img_container{
+    background-color: white;
+    border-radius: 100%;
+    padding: 0%;
+    height: fit-content;
+    margin: auto;
+    cursor: pointer;
+}
+
 /* Template Selection */
 #template_cards_container{
     margin: 10px;
@@ -143,4 +152,9 @@ footer{
     margin: auto;
     background-color: aliceblue;
     padding: 20px;
+}
+
+/* Modal */
+.modal_container{
+    
 }
