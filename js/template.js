@@ -68,9 +68,16 @@ function fillTemplate(template_name, name, time, your_name, date, location) {
       .replace("{date}", date)
       .replace("{location}", location);
 
+    page = ""+
+    "<div>"+
+    "   <input type='email' class='modal_input' name='recipient_email' id='recipient_email' placeholder='Recipient'>"+
+    "</div>"+
+    "<div id='email_content'>"+
+        template+
+    "</div>"
     // Fill template_cards_container
     document.getElementById("template_cards_container").style.display = "block";
-    document.getElementById("template_cards_container").innerHTML = template;
+    document.getElementById("template_cards_container").innerHTML = page;
 
   };
   client.send();
@@ -100,9 +107,6 @@ function createTemplate() {
   html =
     "<!DOCTYPE html>" +
     "<html>" +
-    "    <head>" +
-    '        <base target="_top">' +
-    "    </head>" +
     "    <body>" +
     "        <p>" +
     text +

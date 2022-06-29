@@ -10,9 +10,19 @@
 //document.addEventListener("click", checkIfUrl(event.target))
 
 function checkIfUrl(value){
+
+    // Check is the value that was clicked
     var check = value.target;
-    if(check.attr('href' !== 'undefined')){
-        loadHref(check.textContent, check.getAttribute('href'), check.getAttribue('id'));
+    console.log(check);
+
+    // If the element you clicked is a link
+    if(check.getAttribute('href') !== null){
+        console.log(check.getAttribute('href'));
+
+        // Open the modal for that link
+        loadHref(check.textContent, 
+        check.getAttribute('href'), 
+        check.getAttribute('id'));
     }
 }
 
