@@ -62,6 +62,7 @@ async function sendIt() {
 
     console.log("Message sent: " + info.response);
   });
+  fillTemplateCards();
 }
 
 // function sendIt() {
