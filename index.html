@@ -18,16 +18,16 @@
         <script>
           setDateToToday();
         </script>
-        <button id="submit" onclick="populateNames()">Sub</button>
+        <button id="submit" onclick="populateNames()">Load</button>
       </div>
       <div id="name_container"></div>
     </div>
     <header>
-      <div id="name" class="hidden">Jack Black</div>
-      <div id="yourName" class="hidden">A frying pan</div>
-      <div id="dateMeet" class="hidden">2/30/2020</div>
-      <div id="time" class="hidden">16:15 PM</div>
-      <div id="location" class="hidden">School of Rock</div>
+      <div id="name" class="hidden">Person You Are Meeting With</div>
+      <div id="yourName" class="hidden">Your Name</div>
+      <div id="dateMeet" class="hidden">Meeting Date</div>
+      <div id="time" class="hidden">Meeting Time</div>
+      <div id="location" class="hidden">Meeting Location</div>
       <div class="img_container" onclick="openModal()">
           <img src="./assets/user.png" alt="User Icon">
       </div>
@@ -47,14 +47,13 @@
       <button class="footer_btn" id="new" onclick="openTemplateCreater()">
         Create Template
       </button>
-      <button class="footer_btn" id="send" onclick="sendIt()">Send</button>
     </footer>
 
     <!-- Settings Modal -->
     <div id="modal_container">
       <div id="modal_head">
         <h1>Fill Data</h1>
-        <p id="close_modal" onclick="closeModal()">x</p>
+        <p id="close_modal" onclick="closeModal()">X</p>
       </div>
       <form action="javascript:;" onsubmit="return saveUserData(this)">
         <input type="text" class="modal_input" name="url" id="url" placeholder="Calendar Url"></input>
@@ -67,19 +66,20 @@
     <!-- popup for editing urls-->
     <div id="urlpopup">
         <form id="urlbody" action="javascript:;" onsubmit="return editHref(this);">
-            <label for = "urltext">Link Text</label>
+            <label for = "urltext">Link Text:</label>
             <input type = "text" id="urltext" name="urltext" value="TBD">
             <br>
-            <label for = "urllink">Link URL</label>
+            <label for = "urllink">Link URL:</label>
             <input type = "text" id="urllink" name="urllink" value="TBD">
             <input type = "hidden" id="id" name="id" value="TBD">
             <br>
-            <input type="submit" value="submit">
+            <input type="submit" value="Confirm">
         </form>
     </div>
     
     <script>
       fillTemplateCards();
+      populateNames();
     </script>
   </body>
 </html>
