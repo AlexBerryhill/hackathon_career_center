@@ -165,7 +165,6 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 50px;
-  height: 100%;
 }
 
 #template_text {
@@ -243,6 +242,8 @@ header {
   width: 100%;
   box-sizing: border-box;
   background-color: #EAEAEA;
+  height: 150px;
+  text-align: center;
 }
 
 /*.template_card:hover {
