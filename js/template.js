@@ -116,6 +116,14 @@ function createTemplate() {
   title = document.getElementById("template_title").value;
   text = document.getElementById("template_text").value;
   header = document.getElementById("template_header").value;
+
+  header = header.replaceAll("\n", "");
+  text = text.replaceAll("\n", "<br/>");
+
+  while (text.substring(text.length - 10) == "<br/><br/>"){
+    text = text.substring(0, text.length - 5);
+  }
+
   html =
     "<!DOCTYPE html>" +
     "<html>" +
