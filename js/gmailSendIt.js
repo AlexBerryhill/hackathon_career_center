@@ -3,23 +3,30 @@ var smtpTransport = require("nodemailer-smtp-transport");
 
 require("dotenv").config();
 
-function sendIt() {
+async function sendIt() {
+  var GMAIL = await getUserEmail();
+  var GMAILPASSWORD = await getUserPassword();
+  let content = document.getElementById("filled-template").children;
+  let MESSAGE = content[1].innerHTML;
+  let RECIPIENT = document.getElementById("recipient_email").value;
+  "filled-template".textContent;
+  
   var transporter = nodemailer.createTransport(
     smtpTransport({
       service: "gmail",
       host: "smtp.gmail.com",
       auth: {
-        user: process.env.GMAIL,
-        pass: process.env.GMAILPASSWORD,
+        user: GMAIL,
+        pass: GMAILPASSWORD,
       },
     })
   );
 
   var mailOptions = {
-    from: "denislazo1610@gmail.com",
-    to: "mhendrick000@gmail.com",
-    subject: "Sending Email using Node.js[nodemailer]",
-    text: "That was easy!",
+    from: GMAIL,
+    to: RECIPIENT,
+    subject: "Subject TBD",
+    text: MESSAGE,
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
@@ -29,6 +36,7 @@ function sendIt() {
       console.log("Email sent: " + info.response);
     }
   });
+  fillTemplateCards();
 }
 
 module.exports = { sendIt };
