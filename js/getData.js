@@ -103,28 +103,31 @@ async function getEvents(url, date, email){
 }
 
 async function getUserData(){
-	const userData = await fs.readFileSync('./json/userData.json', 'utf-8', (err, data) => {
-        if (err) {
-            throw err;
-        }
-		// parse JSON object
-		const user = JSON.parse(data.toString());
-				
-		// print JSON object
-		console.log(user);
-
-		return user;
-    });
-
+	let userData = require('./json/userData.json');
+	console.log(userData)
 	//console.log(userData);
 
 	return userData;
 }
 
-async function getCalendarUrl(){
+function getCalendarUrl(){
 	return getUserData().then(user => {
 		console.log(user);
 		return user.url;
+	});
+}
+
+function getUserEmail(){
+	return getUserData().then(user => {
+		console.log(user);
+		return user.email;
+	});
+}
+
+function getUserPassword(){
+	return getUserData().then(user => {
+		console.log(user);
+		return user.password;
 	});
 }
 
