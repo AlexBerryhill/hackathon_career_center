@@ -94,6 +94,7 @@ function openTemplateCreater() {
   html =
     "<div class = 'left_grid'>" +
     "    <input type = 'text' name = 'template_title' id = 'template_title' placeholder='Title'></input><br>" +
+    "    <input type = 'text' name = 'template_header' id = 'template_header' placeholder='Subject'></input><br>" +
     "    <textarea name='template_text' id='template_text' cols='60' rows='20' placeholder='Body'></textarea><br>" +
     "    <button id = 'template_button' onclick='createTemplate()'>Create</button>" +
     "</div>" +
@@ -112,10 +113,14 @@ function openTemplateCreater() {
 function createTemplate() {
   title = document.getElementById("template_title").value;
   text = document.getElementById("template_text").value;
+  header = document.getElementById("template_header").value;
   html =
     "<!DOCTYPE html>" +
     "<html>" +
     "    <body>" +
+    "<p onclick='checkIfUrl(event)' contenteditable='true' id='template-edit-header'>" +
+    header +
+    "</p>" +
     "        <p contenteditable='true' onclick='checkIfUrl(event)' id='template-edit-paragraph'>" +
     text +
     "           <br>{your_name},<br>" +
