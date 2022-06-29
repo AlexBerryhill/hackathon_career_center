@@ -23,6 +23,20 @@ img {
   border-radius: 50%;
 }
 
+table, th, td {
+  border: 1px solid black;
+  margin: 0 auto;
+  background-color: white;
+}
+
+th, td {
+  padding: 4px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 .hidden {
   display: none;
 }
