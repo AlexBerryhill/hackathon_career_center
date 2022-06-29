@@ -2,16 +2,15 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const url = require("url");
 const nodemailer = require("nodemailer");
-const { sendIt } = require("./js/outlookSendIt");
+// const { sendIt } = require("./js/outlookSendIt");
 
-sendIt();
+// sendIt();
 
 //to download exe
 //npx electron-packager .
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
-
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({

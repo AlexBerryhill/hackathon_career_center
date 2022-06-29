@@ -3,7 +3,12 @@ require("dotenv").config();
 
 // Create the transporter with the required configuration for Outlook
 // change the user and pass !
+
 function sendIt() {
+  let content = document.getElementById("template_cards_container").children;
+  let message = content[0].innerHTML;
+  "template_cards_container".textContent;
+
   var transporter = nodemailer.createTransport({
     host: "smtp-mail.outlook.com", // hostname
     secureConnection: false, // TLS requires secureConnection to be false
@@ -19,11 +24,11 @@ function sendIt() {
 
   // setup e-mail data, even with unicode symbols
   var mailOptions = {
-    from: `"Our Code World " <${process.env.OUTLOOK}>`, // sender address (who sends)
-    to: "denislazo1610@gmail.com, mymail2@mail.com", // list of receivers (who receives)
+    from: `"Our Code TESTING " <${process.env.OUTLOOK}>`, // sender address (who sends)
+    to: "denislazo1610@gmail.com", // list of receivers (who receives)
     subject: "Hello ", // Subject line
     text: "Hello world ", // plaintext body
-    html: "<b>Hello world </b><br> This is the first email sent with Nodemailer in Node.js", // html body
+    html: message, // html body
   };
 
   // send mail with defined transport object
@@ -35,5 +40,12 @@ function sendIt() {
     console.log("Message sent: " + info.response);
   });
 }
+
+// function sendIt() {
+//   var message = document.getElementById("template_cards_container");
+
+//   let content = message.children;
+//   console.log(content[1].innerHTML);
+// }
 
 module.exports = { sendIt };
