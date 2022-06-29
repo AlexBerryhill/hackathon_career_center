@@ -98,15 +98,17 @@ function openTemplateCreater() {
     "    <textarea name='template_text' id='template_text' cols='60' rows='20' placeholder='Body'></textarea><br>" +
     "    <button id = 'template_button' onclick='createTemplate()'>Create</button>" +
     "</div>" +
-    "<div class='right_grid'>" +
-    "    Key:<br><br>" +
-    "    <nbsp>{name} = Recipient Name<br>" +
-    "    <nbsp>{time} = Time (hour:minute)<br>" +
-    "    <nbsp>{location} = Meeting location<br>" +
-    "    <nbsp>{date} = The date of your meeting<br>" +
-    "    <nbsp>{your_name} = Your (Mentor) Name<br><br>" +
-    "    The signature block is already included";
-  ("</div>");
+    "<div class='right_grid'>" + // Key should be converted to a table in a second
+    "    <table>" +
+    "    <tr><th>Value to replace</th><th>What it is replaced with</th></tr>" +
+    "    <tr><td>{name}</td><td>Recipient name</td></tr>" +
+    "    <tr><td>{time}</td><td>Time (hour:minute)</td></tr>" +
+    "    <tr><td>{location}</td><td>Meeting location</td></tr>" +
+    "    <tr><td>{date}</td><td>The date of your meeting</td></tr>" +
+    "    <tr><td>{your_name}</td><td>Your (mentor) name</td></tr>" +
+    "</table> <p class='bold'>The signature block is already included</p>" + 
+    "</div>";
+
   document.getElementById("template_cards_container").innerHTML = html;
 }
 
