@@ -24,6 +24,7 @@
   "dependencies": {
     "dotenv": "^16.0.1",
     "electron-fetch": "^1.7.4",
+    "electron-winstaller": "^5.0.0",
     "ical": "^0.8.0",
     "node-ical": "^0.15.1",
     "nodemailer": "^6.7.5",
