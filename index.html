@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="./index.css" />
     <script src="./js/getData.js"></script>
     <script src="./js/template.js"></script>
-    <script src="./js/gmailSendIt.js"></script>
+    <!--<script src="./js/gmailSendIt.js"></script>-->
+    <script src="./js/outlookSendIt.js"></script>
     <script src="./js/modal.js"></script>
     <script src="./js/urlEdit.js"></script>
   </head>
@@ -61,8 +62,8 @@
       </div>
       <form action="javascript:;" onsubmit="return saveUserData(this)">
         <input type="text" class="modal_input" name="url" id="url" placeholder="Calendar Url"></input>
-        <input type="email" class="modal_input" name="email" id="email" placeholder="E-mail Address"></input>
-        <input type="password" class="modal_input" name="password" id="password" placeholder="Email App Password"></input>
+        <input disabled type="email" class="modal_input disabled" name="email" id="email" placeholder="E-mail Address"></input>
+        <input disabled type="password" class="modal_input disabled" name="password" id="password" placeholder="Email App Password"></input>
         <input type="submit" class="modal_input" name="modal_submit" id="modal_submit">
       </form>
     </div>

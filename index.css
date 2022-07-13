@@ -369,7 +369,8 @@ footer {
   background-color: #EAEAEA;
 }
 
-/*#modal_submit:hover,
-#close_modal:hover {
-  font-weight: 600;
-}*/
+.disabled {
+  cursor: not-allowed;
+}
+
+

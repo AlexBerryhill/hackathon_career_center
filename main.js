@@ -1,7 +1,8 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const url = require("url");
-const nodemailer = require("nodemailer");
+
+//const nodemailer = require("nodemailer");
 // const { sendIt } = require("./js/outlookSendIt");
 
 // sendIt();
@@ -23,12 +24,13 @@ function createWindow() {
     },
   });
 
-  win.setMenu(null);
+  //win.setMenu(null);
 
   // and load the index.html of the app.
   win.loadURL(
     url.format({
-      pathname: path.join(__dirname, "index.html"),
+      //pathname: path.join(__dirname, "index.html"),
+      pathname: path.join(__dirname, "oauth.html"),
       protocol: "file:",
       slashes: true,
     })
@@ -68,6 +70,7 @@ app.on("activate", () => {
   }
 });
 
+/*
 function SendIt() {
   var transporter = nodemailer.createTransport({
     host: "smtp-mail.outlook.com", // hostname
@@ -100,6 +103,7 @@ ipcMain.on("SendIt", (event, args) => {
   console.log("ipcMain: Executing SendIt");
   SendIt();
 });
+*/
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

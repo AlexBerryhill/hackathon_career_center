@@ -1,4 +1,4 @@
-var nodemailer = require("nodemailer");
+var nodemailer = require("nodemailer");;
 require("dotenv").config();
 
 // Create the transporter with the required configuration for Outlook
