@@ -6,7 +6,7 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ### Markdown
 [Linkhvkckxfjgxjgxc Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for](https://github.com/AlexBerryhill/hackathon_career_center/raw/main/release-builds/windows-installer/MaadEmailAppInstaller.exe)
-<a href="https://github.com/AlexBerryhill/hackathon_career_center/raw/main/release-builds/windows-installer/MaadEmailAppInstaller.exe" download>Click to Download</a>
+<button href="https://github.com/AlexBerryhill/hackathon_career_center/raw/main/release-builds/windows-installer/MaadEmailAppInstaller.exe" download>Click to Download</button>
 ```markdown
 Syntax highlighted code block
 
