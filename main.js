@@ -1,25 +1,25 @@
+// Dependencies
 const { app, BrowserWindow, ipcMain } = require("electron");
 const electronInstaller = require('electron-winstaller');
 const path = require("path");
 const url = require("url");
-const setupEvents = require('./installers/setupEvents')
+const setupEvents = require('./installers/setupEvents');
+
+// Handle squirrel event
 if (setupEvents.handleSquirrelEvent()) {
-  // squirrel event handled and app will exit in 1000ms, so don't do anything else
+  // Squirrel event handled and app will exit in 1000ms, so don't do anything else
   return;
 }
-
-//const nodemailer = require("nodemailer");
-// const { sendIt } = require("./js/outlookSendIt");
-
-// sendIt();
 
 //to download exe
 //npx electron-packager . maadEmail --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=MAAD --version-string.FileDescription=EmailTemplate --version-string.ProductName="MAAD E-mail"
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
+// Keep a global reference of the window object, if you don't, the window will be closed automatically when the JavaScript object is garbage collected.
 let win;
+
+// Function called when a new window is created
 function createWindow() {
+
   // Create the browser window.
   win = new BrowserWindow({
     width: 800,
@@ -30,47 +30,44 @@ function createWindow() {
     },
   });
 
-  //win.setMenu(null);
+  // Hide the default electron menu in the main window
+  win.setMenu(null);
 
-  // and load the index.html of the app.
+  // Load the apps oauth page
   win.loadURL(
     url.format({
-      //pathname: path.join(__dirname, "index.html"),
       pathname: path.join(__dirname, "oauth.html"),
       protocol: "file:",
       slashes: true,
     })
   );
 
-  // Open the DevTools.
-  // win.webContents.openDevTools()
-
   // Emitted when the window is closed.
   win.on("closed", () => {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
+
+    // Dereferencing the window object
     win = null;
   });
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
+// Call createWindow when electron is ready to open windows
 app.on("ready", createWindow);
 
-// Quit when all windows are closed.
+// Quit the application when all windows are closed.
 app.on("window-all-closed", () => {
-  // On macOS it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
+
+  // If the application is not mac
   if (process.platform !== "darwin") {
+    
+    // Close the application
     app.quit();
   }
 });
 
+// When the app is activated
 app.on("activate", () => {
-  // On macOS it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
+
+  // If there is no active window, create one
   if (win === null) {
     createWindow();
   }

@@ -1,37 +1,39 @@
-// const fs = require('fs');
-
-//open the Form
+// A function to open the user information modal
 function openModal() {
     document.getElementById("modal_container").style.display = "block";
 }
-  
+
+// A function to close the user information modal
 function closeModal() {
     document.getElementById("modal_container").style.display = "none";
 }
 
+// A function to save th euser data into the userData.json
 function saveUserData(){
-    // const userData ={
-// https://app.joinhandshake.com/users/xbtk_XBBD2Xo3Kny6PIbEvEr3WWxkkvimug2b8FY/calendar_sync.ics',
-    //         email: 'hen21023@byui.edu',
-    //         password: 'PASSWORD'
-    //     }
+    
+    // Get the userData from the form
     const userData ={
         url: document.getElementById("url").value,
         email: document.getElementById("email").value,
         password: document.getElementById("password").value
     }
     
-        // convert JSON object to string
+    // Convert userData JSON object to string
     const data = JSON.stringify(userData);
 
-    // write JSON string to a file
+    // Write JSON string to a file
     fs.writeFile('./json/userData.json', data, (err) => {
         if (err) {
+            
+            // Throw an error if there is an error
             throw err;
         }
+
+        // If there is no error, log our success!!
         console.log("JSON data is saved.");
     });
 
+    // After saving the user data close the modal and return true
     closeModal();
     return true;
 }
