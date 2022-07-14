@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="./index.css" />
     <script src="./js/getData.js"></script>
     <script src="./js/template.js"></script>
-    <!--<script src="./js/gmailSendIt.js"></script>-->
     <script src="./js/outlookSendIt.js"></script>
     <script src="./js/modal.js"></script>
     <script src="./js/urlEdit.js"></script>
@@ -17,7 +16,6 @@
   <body>
     <div class="sidebar">
       <div id="url_container">
-        <!-- <input type="text" name="url" id="url" placeholder="url"> -->
         <input type="text" name="date" id="date" placeholder="1/1/2022" />
         <script>
           setDateToToday();
@@ -68,7 +66,7 @@
       </form>
     </div>
 
-    <!-- popup for editing urls-->
+    <!-- Popup for editing urls-->
     <div id="urlpopup">
         <form id="urlbody" action="javascript:;" onsubmit="return editHref(this);">
             <label for = "urltext">Link Text:</label>
