@@ -230,12 +230,12 @@ header {
   box-sizing: border-box;
 }
 
-.send_btn:hover, .footer_btn:hover, #modal_submit:hover, .template_card:hover {
+.send_btn:hover, .footer_btn:hover, #modal_submit:hover, #modal_logout:hover, .template_card:hover {
   background-color: aliceblue;
   transform: scale(1.03);
 }
 
-.send_btn, .footer_btn, #modal_submit, .template_card {
+.send_btn, .footer_btn, #modal_submit, #modal_logout, .template_card {
   transition: all .3s ease-in-out; 
   font-weight: bolder;
 }
@@ -315,7 +315,7 @@ footer {
     position:fixed;
     top: 15%;
     left: 15%;
-    height: 70%;
+    min-height: 70%;
     width: 70%;
     box-shadow: 0 0 0 99999px rgba(0, 0, 0, .5);
     border: groove;
@@ -352,6 +352,11 @@ footer {
 }
 
 #modal_submit {
+  cursor: pointer;
+  background-color: #EAEAEA;
+}
+
+#modal_logout {
   cursor: pointer;
   background-color: #EAEAEA;
 }
