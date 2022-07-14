@@ -1,7 +1,7 @@
+//CURRENTLY REDUNDANT
+
 var nodemailer = require("nodemailer");
 var smtpTransport = require("nodemailer-smtp-transport");
-
-require("dotenv").config();
 
 async function sendIt() {
   var GMAIL = await getUserEmail();

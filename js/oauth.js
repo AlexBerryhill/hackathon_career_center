@@ -31,6 +31,7 @@ app.get('/oauth', (req, res) => {
       scopes: appScopes,
       redirectUri: redirUri,
       state: "getting auth code",
+      prompt: "select_account"
   };
 
   // Request auth code, then redirect
@@ -74,13 +75,25 @@ app.get('/code', (req, res) => {
       if(resp.complete){
 
         oauthArray.push(resp.body.access_token);
+
+          console.log(resp)
+
+          needle.get("https://graph.microsoft.com/v1.0/me", {
+            headers: {"Authorization": 'Bearer ' + resp.body.access_token}
+          }, function(err, resp1) {
+            
+            console.log(resp1)
+            oauthArray.push(resp1.body.mail)
     
-          // Load the oauth array into the session storage
-          sessionStorage.setItem("oauthArray", JSON.stringify(oauthArray));
-          
-          // Open the email window on the main page, and close the oauth page
-          window.open("index.html", "_self");
-          res.send("<script>window.close();</script > ");
+            // Load the oauth array into the session storage
+            sessionStorage.setItem("oauthArray", JSON.stringify(oauthArray));
+
+            // Open the email window on the main page, and close the oauth page
+            window.open("index.html", "_self");
+            res.send("<script>window.close();</script > ");
+
+            
+          })
 
       }
     });

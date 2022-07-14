@@ -2,10 +2,6 @@
 const requestPromise = require("request-promise");
 const ical = require("node-ical");
 
-// TEST
-oauthArray = JSON.parse(sessionStorage.getItem("oauthArray"));
-console.log(oauthArray);
-
 // Variable initialization
 let months = [
   "January",
