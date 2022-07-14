@@ -14,7 +14,7 @@ if (setupEvents.handleSquirrelEvent()) {
 // sendIt();
 
 //to download exe
-//npx electron-packager . hackathon_career_center --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=MAAD --version-string.FileDescription=EmailTemplate --version-string.ProductName="MAAD E-mail"
+//npx electron-packager . maadEmail --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=MAAD --version-string.FileDescription=EmailTemplate --version-string.ProductName="MAAD E-mail"
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

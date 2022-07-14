@@ -7,22 +7,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "package-win": "electron-packager . hackathon_career_center --overwrite --asar --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=\"It's Trucking Real\" --version-string.FileDescription=EmailTemplate --version-string.ProductName=\"MAAD E-mail\"",
+    "package-win": "electron-packager . maadEmail --overwrite --asar --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=\"It's Truckin' Real\" --version-string.FileDescription=EmailTemplate --version-string.ProductName=\"MAAD E-mail\"",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-linux": "electron-packager . hackathon_career_center --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds",
+    "package-linux": "electron-packager . maadEmail --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds",
     "create-installer-win": "node installers/windows/createinstaller.js",
-    "create-installer-mac": "electron-installer-dmg ./release-builds/Electron\\ tutorial\\ app-darwin-x64/Electron\\ tutorial\\ app.app hackathon_career_center --out=release-builds --overwrite --icon=assets/icons/mac/icon.icns"
+    "create-installer-mac": "electron-installer-dmg ./release-builds/Electron\\ tutorial\\ app-darwin-x64/Electron\\ tutorial\\ app.app maadEmail --out=release-builds --overwrite --icon=assets/icons/mac/icon.icns"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlexBerryhill/hackathon_career_center.git"
+    "url": "git+https://github.com/AlexBerryhill/maadEmail.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AlexBerryhill/hackathon_career_center/issues"
+    "url": "https://github.com/AlexBerryhill/maadEmail/issues"
   },
-  "homepage": "https://github.com/AlexBerryhill/hackathon_career_center#readme",
+  "homepage": "https://github.com/AlexBerryhill/maadEmail#readme",
   "devDependencies": {
     "electron": "^19.0.6",
     "electron-packager": "^15.5.1"
