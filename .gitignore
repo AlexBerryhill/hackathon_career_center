@@ -2,4 +2,3 @@ node_modules
 .env
 userData.json
 json/userData.json
-release-builds
