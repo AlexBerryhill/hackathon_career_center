@@ -76,16 +76,4 @@ app.on("activate", () => {
   }
 });
 
-resultPromise = electronInstaller.createWindowsInstaller({
-  appDirectory: './release-builds',
-  outputDirectory: '~/tmp',
-  authors: 'My App Inc.',
-  exe: 'maademail.exe'
-});
-
-resultPromise.then(
-  () => console.log("It worked!"), 
-  (e) => console.log(`No dice: ${e.message}`)
-);
-
 
