@@ -5,8 +5,8 @@ You can use the [editor on GitHub](https://github.com/AlexBerryhill/hackathon_ca
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Markdown
-[Linkhvkckxfjgxjgxc Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for](https://github.com/AlexBerryhill/hackathon_career_center/tree/main/release-builds/windows-installer/MaadEmailAppInstaller.exe)
-
+[Linkhvkckxfjgxjgxc Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for](https://github.com/AlexBerryhill/hackathon_career_center/raw/main/release-builds/windows-installer/MaadEmailAppInstaller.exe)
+<a href="https://github.com/AlexBerryhill/hackathon_career_center/raw/main/release-builds/windows-installer/MaadEmailAppInstaller.exe" download>Click to Download</a>
 ```markdown
 Syntax highlighted code block
 
