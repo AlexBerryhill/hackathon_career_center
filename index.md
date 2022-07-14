@@ -1,12 +1,14 @@
-## Welcome to GitHub Pages
+## Downloads
 
-You can use the [editor on GitHub](https://github.com/AlexBerryhill/hackathon_career_center/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+|      OS |     Link |
+|--------:|---------:|
+| Windows | [Download](https://github.com/AlexBerryhill/hackathon_career_center/raw/main/release-builds/windows-installer/MaadEmailAppInstaller.exe) |
+|     Mac | Download |
+|   Linux | Download |
 
 ### Markdown
 [Linkhvkckxfjgxjgxc Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for](https://github.com/AlexBerryhill/hackathon_career_center/raw/main/release-builds/windows-installer/MaadEmailAppInstaller.exe)
-<button href="https://github.com/AlexBerryhill/hackathon_career_center/raw/main/release-builds/windows-installer/MaadEmailAppInstaller.exe" download>Click to Download</button>
+<a href="https://github.com/AlexBerryhill/hackathon_career_center/raw/main/release-builds/windows-installer/MaadEmailAppInstaller.exe" download>Click to Download</a>
 ```markdown
 Syntax highlighted code block
 
