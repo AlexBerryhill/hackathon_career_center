@@ -11,7 +11,7 @@ function logout(){
     win2.get('/logout', (req, res) => {
         
         // Redirect the user to the oauth2 logout page
-        res.redirect("https://login.microsoftonline.com/common/oauth2/v2.0/logout?post_logout_redirect_uri=http%3A%2F%2Flocalhost%3A5858%2Ftest&client_id=ecda5e65-eb76-435f-b79a-4c44372034ab");
+        res.redirect("https://login.microsoftonline.com/0df8c571-f645-4c6e-bae0-f76b9d1197b1/oauth2/v2.0/logout?post_logout_redirect_uri=http%3A%2F%2Flocalhost%3A5858%2Ftest&client_id=ecda5e65-eb76-435f-b79a-4c44372034ab");
 
     });
 
