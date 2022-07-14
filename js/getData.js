@@ -62,7 +62,7 @@ ical.fromURLNoSuck = function (url, opts, cb) {
 async function getEvents(url, date){
   
 	let todaysEvents = [];
-	
+
 	// Access ICS data
 	return ical.fromURLNoSuck(url, {}, function (err, data) {
     
@@ -70,31 +70,33 @@ async function getEvents(url, date){
 		for (let k in data) {
 		  if (data.hasOwnProperty(k)) {
 	  
-			// EV will contain it if it is an event
-			const ev = data[k];
-			if (data[k].type == 'VEVENT') {
-	  
-			  // If the date of the meeting
-			  let meetingDate = (ev.start.getMonth() + 1) + "/" + ev.start.getDate() + "/" + (ev.start.getYear() + 1900);
-			  //console.log(meetingDate + " - " + date);
-			  if (date == meetingDate || date == "") {
+        if (data[k].type == 'VEVENT') {
 
-          // Get the email that the meeting uses
-          let oEmail = ev.organizer.val.substr(7);
-    
-          // Split each word from the summary
-          let summary = ev.summary.split(" ");
+          // EV will contain it if it is an event
+          const ev = data[k];
+      
+          // If the date of the meeting
+          let meetingDate = (ev.start.getMonth() + 1) + "/" + ev.start.getDate() + "/" + (ev.start.getYear() + 1900);
           
-          // Get users name and organizers name
-          let oFname = summary[summary.indexOf("and") + 1];
-          let oLname = summary[summary.indexOf("and") + 2];
-          let fname = summary[summary.indexOf("with") + 1];
-          let lname = summary[summary.indexOf("with") + 2];
-          
-          // Add it to the list of todays events
-          todaysEvents.push(new Event(ev.start, months[ev.start.getMonth()] + " " + ev.start.getDate() + ", " + (ev.start.getYear() + 1900), ev.start.toLocaleTimeString("en-US", {timeStyle: "short"}), ev.location, fname, lname, oFname, oLname, oEmail, (date == "")));
-			  }
-			}
+          // If the date is today, or left blank
+          if (date == meetingDate || date == "") {
+
+            // Get the email that the meeting uses
+            let oEmail = ev.organizer.val.substr(7);
+      
+            // Split each word from the summary
+            let summary = ev.summary.split(" ");
+            
+            // Get users name and organizers name
+            let oFname = summary[summary.indexOf("and") + 1];
+            let oLname = summary[summary.indexOf("and") + 2];
+            let fname = summary[summary.indexOf("with") + 1];
+            let lname = summary[summary.indexOf("with") + 2];
+            
+            // Add it to the list of todays events
+            todaysEvents.push(new Event(ev.start, months[ev.start.getMonth()] + " " + ev.start.getDate() + ", " + (ev.start.getYear() + 1900), ev.start.toLocaleTimeString("en-US", {timeStyle: "short"}), ev.location, fname, lname, oFname, oLname, oEmail, (date == "")));
+          }
+        }
 		  }
 		}
 
