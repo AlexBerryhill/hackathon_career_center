@@ -15,8 +15,8 @@ function getInstallerConfig () {
 
   return Promise.resolve({
     appDirectory: path.join(outPath, 'maadEmail-win32-ia32/'),
-    authors: 'Alexander Berryhill',
-    description: "An Email Service besed on Templates",
+    authors: 'Alexander Berryhill, Michael Hendrick, Denis Lazo, and Aiden Patterson',
+    description: "An email service using templates and interfacing with calenders",
     noMsi: true,
     outputDirectory: path.join(outPath, 'windows-installer'),
     exe: 'maadEmail.exe',
