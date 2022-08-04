@@ -8,6 +8,10 @@ const { urlencoded } = require("express");
 let usedAuthorities = ['https://login.microsoftonline.com/common/'];
 let cliId = 'ecda5e65-eb76-435f-b79a-4c44372034ab';
 
+// Get the data passed from main js, to be further passed on
+let queryString = window.location.search;
+let urlParams = new URLSearchParams(queryString);
+
 // Client configuration
 const clientConfig = {
   auth: {
@@ -95,6 +99,7 @@ app.get('/code', (req, res) => {
   
           // Load the oauth array into the session storage
           sessionStorage.setItem("oauthArray", JSON.stringify(oauthArray));
+          sessionStorage.setItem("data_path", JSON.stringify(urlParams.get("data_path")));
 
           // Open the email window on the main page, and close the oauth page
           window.open("index.html", "_self");

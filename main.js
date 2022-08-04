@@ -5,6 +5,9 @@ const path = require("path");
 const url = require("url");
 const setupEvents = require('./installers/setupEvents');
 
+// We will need to access this in other files across the application
+data_path = app.getPath("userData");
+
 // Handle squirrel event
 if (setupEvents.handleSquirrelEvent()) {
   // Squirrel event handled and app will exit in 1000ms, so don't do anything else
@@ -31,7 +34,7 @@ function createWindow() {
   });
 
   // Hide the default electron menu in the main window
-  win.setMenu(null);
+  //win.setMenu(null);
 
   // Load the apps oauth page
   win.loadURL(
@@ -39,6 +42,9 @@ function createWindow() {
       pathname: path.join(__dirname, "oauth.html"),
       protocol: "file:",
       slashes: true,
+      query: {
+        data_path: data_path
+      }
     })
   );
 

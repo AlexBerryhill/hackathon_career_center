@@ -8,6 +8,9 @@ function closeModal() {
     document.getElementById("modal_container").style.display = "none";
 }
 
+// The path we access the data from
+let data_path = JSON.parse(sessionStorage.getItem("data_path")) + '/json/userData.json'
+
 // A function to save th euser data into the userData.json
 function saveUserData(){
     
@@ -22,7 +25,7 @@ function saveUserData(){
     const data = JSON.stringify(userData);
 
     // Write JSON string to a file
-    fs.writeFile('./json/userData.json', data, (err) => {
+    fs.writeFile(data_path, data, (err) => {
         if (err) {
             
             // Throw an error if there is an error

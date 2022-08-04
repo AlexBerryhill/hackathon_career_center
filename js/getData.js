@@ -70,7 +70,9 @@ async function getEvents(url, date){
 		for (let k in data) {
 		  if (data.hasOwnProperty(k)) {
 	  
-        if (data[k].type == 'VEVENT') {
+        if (data[k].type == 'VEVENT' && data[k].organizer != null) {
+
+          console.log(data[k]);
 
           // EV will contain it if it is an event
           const ev = data[k];
@@ -111,8 +113,9 @@ async function getEvents(url, date){
 
 // Gather the data from the file "userData.json" 
 async function getUserData(){
-  delete require.cache[require.resolve('./json/userData.json')];
-	let userData = require('./json/userData.json');
+  let data_path = JSON.parse(sessionStorage.getItem("data_path")) + '/json/userData.json';
+  delete require.cache[data_path];
+	let userData = require(data_path);
 	return userData;
 }
 

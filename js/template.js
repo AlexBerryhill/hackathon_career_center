@@ -6,11 +6,11 @@ const fs = require("fs");
 function fillTemplateCards() {
 
   // Getting path to templates and initializing a blank string for the templates
-  const directoryPath = path.join(__dirname, "templates");
+  let data_path = JSON.parse(sessionStorage.getItem("data_path")) + '/templates';
   var template_cards = "";
   
   // Read all files from the templates folder
-  fs.readdir(directoryPath, function (err, files) {
+  fs.readdir(data_path, function (err, files) {
     
     // If there is an error, log it
     if (err) {
@@ -54,13 +54,14 @@ function fillTemplate(template_name, name, time, your_name, date, location) {
   var client = new XMLHttpRequest();
 
   // Load the required template
-  client.open("GET", "./templates/" + template_name);
+  let data_path = JSON.parse(sessionStorage.getItem("data_path")) + '/templates/' + template_name;
+  client.open("GET", data_path);
 
   // When the template is loaded
   client.onreadystatechange = function () {
 
     // Set the directory path to the templates folder
-    const directoryPath = path.join(__dirname, "templates");
+    let data_path = JSON.parse(sessionStorage.getItem("data_path")) + '/templates';
 
     // Get Template from folder
     var template = client.responseText;
@@ -162,7 +163,8 @@ function createTemplate() {
     "</html>";
 
   // Add that new template into the templates folder
-  fs.writeFile("./templates/" + title + ".html", html, (err) => {
+  let data_path = JSON.parse(sessionStorage.getItem("data_path")) + '/templates/' + title + ".html";
+  fs.writeFile(data_path, html, (err) => {
     if (err) {
       
       // If there is an error log it
@@ -191,7 +193,8 @@ function deleteTemplate(template_name) {
   try {
 
     // Delete the template
-    fs.unlinkSync("./templates/" + template_name);
+    let data_path = JSON.parse(sessionStorage.getItem("data_path")) + '/templates/' + template_name;
+    fs.unlinkSync(data_path);
 
     // Load the window to delete templates again
     fillDeleteTemplateCards();
@@ -209,11 +212,11 @@ function deleteTemplate(template_name) {
 function fillDeleteTemplateCards() {
 
   // Set the directory path to the templates folder
-  const directoryPath = path.join(__dirname, "templates");
+  let data_path = JSON.parse(sessionStorage.getItem("data_path")) + '/templates';
   var template_cards = "";
 
   // Load the template from the file
-  fs.readdir(directoryPath, function (err, files) {
+  fs.readdir(data_path, function (err, files) {
 
     // Handling error
     if (err) {
@@ -239,8 +242,7 @@ function fillDeleteTemplateCards() {
     });
 
     // Set the card container to the list of template cards, and set its display to grid
-    document.getElementById("template_cards_container").innerHTML =
-      template_cards;
+    document.getElementById("template_cards_container").innerHTML = template_cards;
     document.getElementById("template_cards_container").style.display = "grid";
   });
 }
