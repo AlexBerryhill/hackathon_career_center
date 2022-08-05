@@ -1,5 +1,9 @@
-const electron = require('electron')
-const app = electron.app
+const electron = require('electron');
+const app = electron.app;
+const fse = require('fs-extra');
+
+// We will need to access this in other files across the application
+data_path = app.getPath("userData");
 
 module.exports = {
     handleSquirrelEvent: function() {
@@ -31,6 +35,16 @@ module.exports = {
         const squirrelEvent = process.argv[1];
         switch (squirrelEvent) {
             case '--squirrel-install':
+
+                // Copy data from install location to user data location
+                fse.copy("../templates", data_path + "/templates", function (err) {
+                    if (err) {                 
+                    console.error(err);      
+                    } else {
+                    console.log("success!");
+                    }
+                });
+
             case '--squirrel-updated':
             // Optionally do things such as:
             // - Add your .exe to the PATH
