@@ -41,6 +41,7 @@
     "nodemailer-smtp-transport": "^2.7.4",
     "open": "^8.4.0",
     "path": "^0.12.7",
+    "request": "^2.88.2",
     "request-promise": "^4.2.6"
   }
 }
