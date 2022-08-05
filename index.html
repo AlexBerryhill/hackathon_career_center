@@ -21,7 +21,7 @@
         <script>
           setDateToToday();
         </script>
-        <button id="submit" onclick="populateNames()">Load</button>
+        <button id="submit" onclick="populateNames();console.log('test')">Load</button>
       </div>
       <div id="name_container"></div>
     </div>
@@ -85,6 +85,19 @@
     <script>
       fillTemplateCards();
       populateNames();
+      
+      // Get the input field
+      var input = document.getElementById("date");
+
+      // Execute a function when the user presses a key on the keyboard
+      input.addEventListener("keypress", function(event) {
+        // If the user presses the "Enter" key on the keyboard
+        if (event.key === "Enter") {
+          // Trigger the button element with a click
+          document.getElementById("submit").click();
+        }
+      });
+      
     </script>
   </body>
 </html>

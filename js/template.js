@@ -1,6 +1,7 @@
 // Dependencies
 const path = require("path");
 const fs = require("fs");
+const { match } = require("assert");
 
 // A function to load all of the template cards, and switch the screen to focus on them
 function fillTemplateCards() {
@@ -66,6 +67,39 @@ function fillTemplate(template_name, name, time, your_name, date, location) {
     // Get Template from folder
     var template = client.responseText;
 
+    // Expression to return text in the format { ... }
+    let regExSearch = /{.*?}/g;
+
+    // Match that text
+    let matches = template.match(regExSearch) || [];
+
+    // For every match
+    for (arr_index in matches) {
+      let item = matches[arr_index];
+
+      // If it is a link (it will have a colon in the middle)
+      if (item.indexOf(":") !== -1) {
+
+        // Split the match into an array representing the link text, and the url
+        let match_index = template.indexOf(item);
+        let end_index = match_index + item.length - 2;
+        let data_to_split = template.substring(match_index + 1, end_index + 1);
+        let link_data = data_to_split.split(":");
+
+        // If it only has 2 items
+        if (link_data.length == 2){
+          
+          // Fill in the template with the proper values from the link
+          let link_html = "<a href='" + link_data[1] + "'>" + link_data[0] + "</a>";
+          template = template.slice(0, match_index) + link_html + template.slice(end_index + 2);
+
+        }
+        
+      }
+
+    }
+
+
     // Fill in user and event data
     template = template
       .replace(/{name}/g, name)
@@ -118,6 +152,7 @@ function openTemplateCreator() {
     "    <tr><td>{location}</td><td>Meeting location</td></tr>" +
     "    <tr><td>{date}</td><td>The date of your meeting</td></tr>" +
     "    <tr><td>{your_name}</td><td>Your (mentor) name</td></tr>" +
+    "    <tr><td>{[link text]:[link url]}</td><td>Making a link</td></tr>" +
     "</table> <p class='bold'>The signature block is already included</p>" + 
     "</div>";
 
@@ -139,9 +174,11 @@ function createTemplate() {
   text = text.replaceAll("\n", "<br/>");
 
   // Trim newlines at the end of the body to put the signature in the correct location
-  while (text.substring(text.length - 10) == "<br/><br/>"){
+  while (text.substring(text.length - 5) == "<br/>"){
     text = text.substring(0, text.length - 5);
   }
+
+  text = text + "<br/>";
 
   // HTML for the new template
   html =
