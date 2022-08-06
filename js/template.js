@@ -37,6 +37,9 @@ function fillTemplateCards() {
     // Set the display of the template card container to grid
     document.getElementById("template_cards_container").style.display = "grid";
   });
+  
+  // Hide link editor if it is open
+  document.getElementById("urlpopup").style.display = "none";
 
 }
 
@@ -283,5 +286,9 @@ function fillDeleteTemplateCards() {
     document.getElementById("template_cards_container").innerHTML = template_cards;
     document.getElementById("template_cards_container").style.display = "grid";
   });
+
+  // Hide link editor if it is open
+  document.getElementById("urlpopup").style.display = "none";
+
 }
 

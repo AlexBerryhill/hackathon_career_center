@@ -4,7 +4,7 @@ const { get } = require("request-promise");
 // A function to get the offset of an element
 function getOffset(ele) {
 
-  // Get th bounding box
+  // Get the bounding box
   const rect = ele.getBoundingClientRect();
   
   // Return the distance from the left side of the page, and from the top
