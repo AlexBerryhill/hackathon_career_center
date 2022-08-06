@@ -1,6 +1,16 @@
 // Dependencies
 const requestPromise = require("request-promise");
 const ical = require("node-ical");
+const path = require("path");
+
+//Get template folder path
+const appFolder = path.resolve(process.execPath, '..');
+const rootAtomFolder = path.resolve(appFolder, '..');
+const templatePath = path.resolve(path.join(rootAtomFolder, 'app-1.0.0/resources/templates'));
+
+//Get userData path
+const userDataPath = path.resolve(path.join(rootAtomFolder, 'app-1.0.0/resources/userData.json'));
+
 
 // Variable initialization
 let months = [
@@ -113,7 +123,7 @@ async function getEvents(url, date){
 
 // Gather the data from the file "userData.json" 
 async function getUserData(){
-  let data_path = JSON.parse(sessionStorage.getItem("data_path")) + '/json/userData.json';
+  let data_path = userDataPath;
   delete require.cache[data_path];
 	let userData = require(data_path);
 	return userData;

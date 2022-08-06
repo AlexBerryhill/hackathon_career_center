@@ -1,3 +1,7 @@
+//Get userData path
+// const path = require("path");
+
+
 // A function to open the user information modal
 function openModal() {
     document.getElementById("modal_container").style.display = "block";
@@ -9,7 +13,7 @@ function closeModal() {
 }
 
 // The path we access the data from
-let data_path = JSON.parse(sessionStorage.getItem("data_path")) + '/json/userData.json'
+let data_path = userDataPath
 
 // A function to save th euser data into the userData.json
 function saveUserData(){
