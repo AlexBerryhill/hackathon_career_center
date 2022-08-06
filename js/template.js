@@ -7,7 +7,7 @@ const { match } = require("assert");
 function fillTemplateCards() {
 
   // Getting path to templates and initializing a blank string for the templates
-  let data_path = JSON.parse(sessionStorage.getItem("data_path")) + '/templates';
+  let data_path = './templates';
   var template_cards = "";
   
   // Read all files from the templates folder
@@ -55,14 +55,14 @@ function fillTemplate(template_name, name, time, your_name, date, location) {
   var client = new XMLHttpRequest();
 
   // Load the required template
-  let data_path = JSON.parse(sessionStorage.getItem("data_path")) + '/templates/' + template_name;
+  let data_path = './templates/' + template_name;
   client.open("GET", data_path);
 
   // When the template is loaded
   client.onreadystatechange = function () {
 
     // Set the directory path to the templates folder
-    let data_path = JSON.parse(sessionStorage.getItem("data_path")) + '/templates';
+    let data_path = './templates';
 
     // Get Template from folder
     var template = client.responseText;
@@ -200,7 +200,7 @@ function createTemplate() {
     "</html>";
 
   // Add that new template into the templates folder
-  let data_path = JSON.parse(sessionStorage.getItem("data_path")) + '/templates/' + title + ".html";
+  let data_path = './templates/' + title + ".html";
   fs.writeFile(data_path, html, (err) => {
     if (err) {
       
@@ -230,7 +230,7 @@ function deleteTemplate(template_name) {
   try {
 
     // Delete the template
-    let data_path = JSON.parse(sessionStorage.getItem("data_path")) + '/templates/' + template_name;
+    let data_path = './templates/' + template_name;
     fs.unlinkSync(data_path);
 
     // Load the window to delete templates again
@@ -249,7 +249,7 @@ function deleteTemplate(template_name) {
 function fillDeleteTemplateCards() {
 
   // Set the directory path to the templates folder
-  let data_path = JSON.parse(sessionStorage.getItem("data_path")) + '/templates';
+  let data_path = './templates';
   var template_cards = "";
 
   // Load the template from the file

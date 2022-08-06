@@ -3,7 +3,7 @@ const app = electron.app;
 const fse = require('fs-extra');
 
 // We will need to access this in other files across the application
-data_path = app.getPath("userData");
+// data_path = app.getPath("userData");
 
 module.exports = {
     handleSquirrelEvent: function() {
@@ -36,14 +36,14 @@ module.exports = {
         switch (squirrelEvent) {
             case '--squirrel-install':
 
-                // Copy data from install location to user data location
-                fse.copySync("./templates", data_path + "/templates", function (err) {
-                    if (err) {
-                    console.error(err);
-                    } else {
-                    console.log("success!");
-                    }
-                });
+                // // Copy data from install location to user data location
+                // fse.copySync("./templates", data_path + "/templates", function (err) {
+                //     if (err) {
+                //     console.error(err);
+                //     } else {
+                //     console.log("success!");
+                //     }
+                // });
 
             case '--squirrel-updated':
                 // Optionally do things such as:
