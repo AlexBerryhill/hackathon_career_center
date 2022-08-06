@@ -34,7 +34,7 @@ function createWindow() {
   });
 
   // Hide the default electron menu in the main window
-  //win.setMenu(null);
+  win.setMenu(null);
 
   // Load the apps oauth page
   win.loadURL(
