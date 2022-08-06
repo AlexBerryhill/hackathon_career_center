@@ -2,3 +2,4 @@ node_modules
 .env
 userData.json
 json/userData.json
+release-builds/maadEmail-win32-ia32
