@@ -37,9 +37,9 @@ module.exports = {
             case '--squirrel-install':
 
                 // Copy data from install location to user data location
-                fse.copy("../templates", data_path + "/templates", function (err) {
-                    if (err) {                 
-                    console.error(err);      
+                fse.copySync(appFolder + "/templates", data_path + "/templates", function (err) {
+                    if (err) {
+                    console.error(err);
                     } else {
                     console.log("success!");
                     }
