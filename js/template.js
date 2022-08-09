@@ -3,8 +3,6 @@
 const fs = require("fs");
 const { match } = require("assert");
 
-//Get template folder path
-
 // A function to load all of the template cards, and switch the screen to focus on them
 function fillTemplateCards() {
 
@@ -52,6 +50,54 @@ function callFillTemplate(file){
   document.getElementById('location').innerHTML);
 }
 
+// A function that will return the starting index of each set of {} in a text
+function handleFormat(text) {
+
+  // Initialize the result variable
+  var result = [];
+
+  // Loop through each character in the text
+  for (index in text) {
+
+    // If that character is an open curly brace it means that 
+    if (text[index] === "{") {
+
+      // The index of the start of the substring that will be returned
+      let start_index = index;
+
+      // Initialize end index
+      let end_index = index;
+
+      // How deeply nested we are in curly brackets
+      var nest = 0;
+
+      for (sub_index in text.slice(start_index)) {
+
+        if (text[parseInt(index) + parseInt(sub_index)] === "{") {
+          nest ++;
+        }
+
+        else if (text[parseInt(index) + parseInt(sub_index)] === "}") {
+          nest --;
+        }
+        
+        if (nest === 0) {
+
+          end_index = parseInt(index) + parseInt(sub_index);
+          result.push(text.slice(start_index, end_index + 1));
+          break;
+          
+        }
+
+      }
+
+    }
+  }
+
+  return result;
+
+}
+
 // Function to fill a template given a file name, and the information to fill it with
 function fillTemplate(template_name, name, time, your_name, date, location) {
 
@@ -71,11 +117,8 @@ function fillTemplate(template_name, name, time, your_name, date, location) {
     // Get Template from folder
     var template = client.responseText;
 
-    // Expression to return text in the format { ... }
-    let regExSearch = /{.*?}/g;
-
     // Match that text
-    let matches = template.match(regExSearch) || [];
+    let matches = handleFormat(template);
 
     // For every match
     for (arr_index in matches) {
