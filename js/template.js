@@ -237,7 +237,7 @@ function createTemplate() {
     "</p>" +
     "        <p contenteditable='true' onclick='checkIfUrl(event)' id='template-edit-paragraph'>" +
     text +
-    "           <br>{your_name},<br>" +
+    "           <br>{your_name}<br>" +
     "           Career Success Mentor<br>" +
     "           BYU-I Career Center | MC 200 <br>" +
     "           208.496.9825  <br>" +
