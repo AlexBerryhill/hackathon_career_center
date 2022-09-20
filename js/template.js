@@ -280,8 +280,8 @@ function deleteTemplate(template_name) {
     let data_path = templatePath+'/' + template_name;
     fs.unlinkSync(data_path);
 
-    // Load the window to delete templates again
-    fillDeleteTemplateCards();
+    // Load the template cards
+    fillTemplateCards();
 
     // Log your success
     console.log("File is deleted.");
